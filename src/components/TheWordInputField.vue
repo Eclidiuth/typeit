@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" value="webpa">
+    <input type="text" placeholder="Type the word above here">
   </div>
 </template>
 

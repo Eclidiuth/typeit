@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div id="play" class="container mt-5">
+    <div id="play" class="container my-5">
       <div class="header">
         <the-word-display :word="currentWord" />
         <the-word-input-field />
       </div>
-      <div class="main">
+      <div class="main pb-3">
         <div class="container-90">
-          <the-word-list-group class="m-3" />
+          <the-word-list-group class="mt-3" />
+          <the-ranking-list-group class="mt-3 mb-3" /> 
         </div>
       </div>
     </div>
@@ -20,20 +21,23 @@
 <style lang="scss" scoped>
 #play {
   background-color: $white;
+  min-width: 640px;
 }
 </style>
 
 <script>
-import TheWordDisplay from '@/components/TheWordDisplay.vue'
-import TheWordInputField from '@/components/TheWordInputField.vue'
-import TheWordListGroup from '@/components/TheWordListGroup.vue'
+import TheWordDisplay       from '@/components/TheWordDisplay.vue'
+import TheWordInputField    from '@/components/TheWordInputField.vue'
+import TheWordListGroup     from '@/components/TheWordListGroup.vue'
+import TheRankingListGroup  from '@/components/TheRankingListGroup.vue'
 
 export default {
   name: 'Home',
   components: {
     TheWordDisplay,
     TheWordInputField,
-    TheWordListGroup
+    TheWordListGroup,
+    TheRankingListGroup
   },
   data(){
     return ({

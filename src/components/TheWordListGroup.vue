@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Words | JavaScript config file names</h3>
+    <h3>Words | JavaScript</h3>
     <ul>
       <the-word-list-item class="mr-1">webpack.config.js</the-word-list-item>
       <the-word-list-item class="mr-1">postcss.config.js</the-word-list-item>

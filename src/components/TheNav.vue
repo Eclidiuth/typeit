@@ -25,6 +25,7 @@
 nav {
   background-color: $text-black-primary;
   height: 60px;
+  min-width: 640px;
 
   h1 {
     font-size: $fsize-h6;
