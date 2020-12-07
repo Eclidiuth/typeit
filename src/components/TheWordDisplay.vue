@@ -4,22 +4,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TheWordDisplay',
-  props: {
-    word: {
-      type: String,
-      required: true
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 @import '@/scss/utilities.scss';
 </style>
 <style lang="scss" scoped>
+
 div {
   background-color: $text-black-primary;
   padding: 40px;
@@ -32,3 +21,15 @@ div {
   }
 }
 </style>
+
+<script>
+export default {
+  name: 'TheWordDisplay',
+  props: {
+    word: {
+      type: String,
+      required: true
+    }
+  }
+}
+</script>

@@ -36,18 +36,11 @@ export default {
   components: {
     TheWordListItem
   },
-  data(){
-    return ({
-      words: [
-        'webpack.config.js',
-        'postcss.config.js',
-        'vue.config.js',
-        'jsconfig.js',
-        'babel.config.js',
-        '.babelrc',
-        '.eslintrc'
-      ]
-    })
+  props: {
+    words: {
+      type: Array,
+      required: true
+    }
   }
 }
 </script>

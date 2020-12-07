@@ -2,12 +2,12 @@
   <div>
     <div id="play" class="container my-5">
       <div class="header">
-        <the-word-display :word="currentWord" />
+        <the-word-display word="webpack" />
         <the-word-input-field />
       </div>
       <div class="main pb-3">
         <div class="container-90">
-          <the-word-list-group class="mt-3" />
+          <the-word-list-group :words="['webpack.config.js', 'postcss.config.js']" class="mt-3" />
           <the-ranking-list-group class="mt-3 mb-3" /> 
         </div>
       </div>
@@ -39,18 +39,5 @@ export default {
     TheWordListGroup,
     TheRankingListGroup
   },
-  data(){
-    return ({
-      wordList: [
-        'webpack', 'babel'
-      ],
-      wordInputFieldValue: ''
-    })
-  },
-  computed: {
-    currentWord(){
-      return this.wordList[0]
-    }
-  }
 }
 </script>
