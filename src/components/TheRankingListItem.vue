@@ -1,13 +1,13 @@
 <template>
   <li>
     <span class="rankingList-recordNumber">
-      <slot name="recordNumber" />
+      {{ number }}
     </span>
     <span class="rankingList-recordTime">
-      <slot name="recordTime" />
+      {{ time }} seconds
     </span>
     <span class="rankingList-recordDate">
-      <slot name="recordDate" />
+      {{ date }}
     </span>
   </li>
 </template>
@@ -42,6 +42,20 @@ li {
 
 <script>
 export default {
-  name: 'TheRankingListItem'
+  name: 'TheRankingListItem',
+  props: {
+    number: {
+      type: Number,
+      required: true
+    },
+    time: {
+      type: Number,
+      required: true
+    },
+    date: {
+      type: Date,
+      required: true
+    },
+  }
 }
 </script>

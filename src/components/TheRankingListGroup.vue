@@ -7,21 +7,9 @@
         <span class="rankingList-recordTime">Time</span>
         <span class="rankingList-recordDate">Date</span>
       </li>
-      <the-ranking-list-item class="rankingList-item">
-        <template v-slot:recordNumber>1</template>
-        <template v-slot:recordTime>25.0 seconds</template>
-        <template v-slot:recordDate>{{ new Date().toString() }}</template>
-      </the-ranking-list-item>
-      <the-ranking-list-item class="rankingList-item">
-        <template v-slot:recordNumber>2</template>
-        <template v-slot:recordTime>30.0 seconds</template>
-        <template v-slot:recordDate>{{ new Date().toString() }}</template>
-      </the-ranking-list-item>
-      <the-ranking-list-item class="rankingList-item">
-        <template v-slot:recordNumber>1</template>
-        <template v-slot:recordTime>35.0 seconds</template>
-        <template v-slot:recordDate>{{ new Date().toString() }}</template>
-      </the-ranking-list-item>
+      <the-ranking-list-item v-for="record in records" :key="record.number" 
+        :number="record.number" :time="record.time" :date="record.date"
+        class="rankingList-item" />
     </ul>
   </div>
 </template>
@@ -82,6 +70,27 @@ export default {
   name: 'TheRankingListGroup',
   components: {
     TheRankingListItem
+  },
+  data(){
+    return ({
+      records: [
+        {
+          number: 1,
+          time  : 20.0,
+          date  : new Date()  
+        },
+        {
+          number: 2,
+          time  : 25.0,
+          date  : new Date()  
+        },
+        {
+          number: 3,
+          time  : 30.0,
+          date  : new Date()  
+        },
+      ]
+    })
   }
 }
 </script>
