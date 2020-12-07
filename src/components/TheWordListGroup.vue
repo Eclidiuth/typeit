@@ -2,13 +2,9 @@
   <div>
     <h3>Words | JavaScript</h3>
     <ul>
-      <the-word-list-item class="mr-1">webpack.config.js</the-word-list-item>
-      <the-word-list-item class="mr-1">postcss.config.js</the-word-list-item>
-      <the-word-list-item class="mr-1">vue.config.js</the-word-list-item>
-      <the-word-list-item class="mr-1">jsconfig.js</the-word-list-item>
-      <the-word-list-item class="mr-1">babel.config.js</the-word-list-item>
-      <the-word-list-item class="mr-1">.babelrc</the-word-list-item>
-      <the-word-list-item class="mr-1">.eslintrc</the-word-list-item>
+      <the-word-list-item v-for="word in words" :key="word" class="mr-1">
+        {{ word }}
+      </the-word-list-item>
     </ul>
   </div>
 </template>
@@ -39,6 +35,19 @@ export default {
   name: 'TheWordListGroup',
   components: {
     TheWordListItem
+  },
+  data(){
+    return ({
+      words: [
+        'webpack.config.js',
+        'postcss.config.js',
+        'vue.config.js',
+        'jsconfig.js',
+        'babel.config.js',
+        '.babelrc',
+        '.eslintrc'
+      ]
+    })
   }
 }
 </script>
