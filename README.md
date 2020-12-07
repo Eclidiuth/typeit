@@ -1,5 +1,9 @@
 # typeit
 
+TypeIt is a typing practice app based on KeyTest version 10
+
+![App Screenshot](/public/screenshot1.png)
+
 ## Project setup
 ```
 npm install
