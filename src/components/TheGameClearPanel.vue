@@ -1,7 +1,10 @@
 <template>
   <div>
     <p class="time text-align-center">Cleared! Time: 20 seconds</p>
-    <p class="playAgain text-align-center">Play again</p>
+    <p class="playAgain text-align-center">
+      <font-awesome-icon icon="undo" />
+      Play again
+    </p>
   </div>
 </template>
 
