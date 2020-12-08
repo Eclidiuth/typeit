@@ -2,13 +2,18 @@ export default {
   namespaced: true,
 
   state: () => ({
+    isGameEnded: false,
     inputFieldValue: '',
-    wordListName: 'test',
+    wordListName: 'test2',
     wordListIndex: 0,
     wordLists: [
       {
         name: 'test',
         words: ['a', 'b', 'c']
+      },
+      {
+        name: 'test2',
+        words: ['ab', 'cd', 'ef']
       },
       {
         name: 'js',
@@ -39,10 +44,11 @@ export default {
   },
   mutations: {
     setInputFieldValue: (state, value) => state.inputFieldValue = value,
-    setWordListIndex: (state, index) => state.wordListIndex = index
+    setWordListIndex: (state, index) => state.wordListIndex = index,
   },
   actions: {
     updateInputFieldValue: ({ commit }, value) => commit('setInputFieldValue', value),
-    updateWordListIndex: ({ commit }, index) => commit('setWordListIndex', index)
+    updateWordListIndex: ({ commit }, index) => commit('setWordListIndex', index),
+    resetWordListIndex: ({ commit }) => commit('setWordListIndex', 0)
   }
 }

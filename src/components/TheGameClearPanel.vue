@@ -26,7 +26,7 @@ export default {
   name: 'TheGameClearPanel',
   props: {
     time: {
-      type: Number,
+      type: String,
       required: true
     }
   }

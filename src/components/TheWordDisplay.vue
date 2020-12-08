@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p class="text-align-center">{{ word }}</p>
+    <p class="text-align-center">
+      <span v-for="(char, index) in word" :key="index" :class="hilightClassNames[index]">{{ char }}</span>
+    </p>
   </div>
 </template>
 
@@ -18,6 +20,14 @@ div {
     font-size: $fsize-h5;
     font-weight: $fweight-h3;
     margin: 0;
+
+    .green {
+      color: green;
+    }
+
+    .red {
+      color: red;
+    }
   }
 }
 </style>
@@ -26,9 +36,18 @@ div {
 export default {
   name: 'TheWordDisplay',
   props: {
+    charCheckCollections: {
+      type: Array,
+      required: true,
+    },
     word: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    hilightClassNames(){
+      return this.charCheckCollections.map(el => el ? 'green' : 'red')
     }
   }
 }
