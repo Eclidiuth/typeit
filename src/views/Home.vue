@@ -2,8 +2,6 @@
   <div>
     <div id="play" class="container my-5">
       <div class="header">
-        <p>{{ inputFieldValue ? inputFieldValue : 'none'}}</p>
-        <p>Array: {{ checkWordAndInput }}</p>
         <template v-if="isGameEnded">
           <the-game-clear-panel time="20" v-on:click.native="restartGame" />
         </template>

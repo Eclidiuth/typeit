@@ -17,7 +17,7 @@ div {
 
   p {
     color: $text-white-primary;
-    font-size: $fsize-h5;
+    font-size: $fsize-h4;
     font-weight: $fweight-h3;
     margin: 0;
 

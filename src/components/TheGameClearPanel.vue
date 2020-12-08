@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p class="text-align-center">Game clear!</p>
-    <p class="time text-align-center">Time: {{ time }} seconds</p>
+    <p class="time text-align-center">Cleared! Time: 20 seconds</p>
+    <p class="playAgain text-align-center">Play again</p>
   </div>
 </template>
 
@@ -11,12 +11,19 @@
 <style lang="scss" scoped>
 div {
   p {
-    background-color: $text-black-primary;
     color: $text-white-primary;
-    font-size: $fsize-h5;
-    font-weight: $fweight-h3;
     margin: 0;
     padding: 40px;
+
+    &.time {
+      background-color: $colors-green;
+      font-size: $fsize-h4;
+    }
+
+    &.playAgain {
+      background-color: $black;
+      font-size: $fsize-h5;
+    }
   }
 }
 </style>
