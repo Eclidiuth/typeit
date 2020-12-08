@@ -1,3 +1,6 @@
+html {
+  min-height: calc(100% + 200px);
+}
 
 body {
   background-color: $text-white-primary;

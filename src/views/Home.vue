@@ -2,14 +2,18 @@
   <div>
     <div id="play" class="container my-5">
       <div class="header">
-        <p>Is input correct: {{ isInputCorrect }}</p>
-        <p>{{ inputFieldValue }}</p>
-        <the-word-display :word="word" />
-        <the-word-input-field v-model="inputFieldValue" />
+        <p>{{ inputFieldValue ? inputFieldValue : 'none'}}</p>
+        <template v-if="isGameEnded">
+          Game cleared!
+        </template>
+        <template v-else>
+          <the-word-display :word="word" />
+          <the-word-input-field v-model="inputFieldValue" />
+        </template>
       </div>
       <div class="main pb-3">
         <div class="container-90">
-          <the-word-list-group :words="words" class="mt-3" />
+          <the-word-list-group :words="wordListWords" class="mt-3" />
           <the-ranking-list-group class="mt-3 mb-3" /> 
         </div>
       </div>
@@ -43,11 +47,21 @@ export default {
     TheRankingListGroup
   },
   computed: {
-    ...mapGetters('play', {
-      word: 'word',
-      words: 'wordListWords'
-    }),
+    ...mapGetters('play', [
+      'word', 'wordListWords', 'wordListIndex'
+    ]),
 
+    isGameEnded(){
+      const wordListWordsLength = this.wordListWords.length
+      const wordListIndex = this.wordListIndex
+
+      console.log(wordListWordsLength, wordListIndex)
+      const isGameEnded = (wordListWordsLength === wordListIndex)
+        ? true : false
+
+      return isGameEnded
+
+    },
     isInputCorrect(){
       const word = this.word
       const input = this.inputFieldValue
@@ -69,7 +83,7 @@ export default {
       const shouldUpdateWordListIndex = this.isInputCorrect
 
       if(shouldUpdateWordListIndex){
-        const currentWordListIndex = this.$store.getters['play/wordListIndex']
+        const currentWordListIndex = this.wordListIndex
         const wordListIndex = currentWordListIndex + 1
 
         this.$store.dispatch('play/updateWordListIndex', wordListIndex)
@@ -79,7 +93,7 @@ export default {
   },
   methods: {
     clearInputField(){
-      this.$store.dispatch('play/updateInputFieldValue', '')
+      setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
     }
   }
 }

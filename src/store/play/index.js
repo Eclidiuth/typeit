@@ -3,9 +3,13 @@ export default {
 
   state: () => ({
     inputFieldValue: '',
-    wordListName: 'js',
+    wordListName: 'test',
     wordListIndex: 0,
     wordLists: [
+      {
+        name: 'test',
+        words: ['a', 'b', 'c']
+      },
       {
         name: 'js',
         words: [
