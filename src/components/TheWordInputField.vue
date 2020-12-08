@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" placeholder="Type the word above here">
+    <input v-model="localValue" type="text" placeholder="Type the word above here">
   </div>
 </template>
 
@@ -29,6 +29,21 @@ div {
 
 <script>
 export default {
-  name: 'TheWordInputField'
+  name: 'TheWordInputField',
+  props: {
+    value: {
+      type: String
+    }
+  },
+  computed: {
+    localValue: {
+      get(){
+        return this.value
+      },
+      set(value){
+        this.$emit('input', value)
+      }
+    }
+  }
 }
 </script>
