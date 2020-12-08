@@ -4,7 +4,7 @@
       <div class="header">
         <p>{{ inputFieldValue ? inputFieldValue : 'none'}}</p>
         <template v-if="isGameEnded">
-          Game cleared!
+          <the-game-clear-panel time="20" />
         </template>
         <template v-else>
           <the-word-display :word="word" />
@@ -32,6 +32,7 @@
 </style>
 
 <script>
+import TheGameClearPanel    from '@/components/TheGameClearPanel.vue'
 import TheWordDisplay       from '@/components/TheWordDisplay.vue'
 import TheWordInputField    from '@/components/TheWordInputField.vue'
 import TheWordListGroup     from '@/components/TheWordListGroup.vue'
@@ -41,6 +42,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Home',
   components: {
+    TheGameClearPanel,
     TheWordDisplay,
     TheWordInputField,
     TheWordListGroup,
