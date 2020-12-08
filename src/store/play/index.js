@@ -4,7 +4,7 @@ export default {
   state: () => ({
     isGameEnded: false,
     inputFieldValue: '',
-    wordListName: 'test2',
+    wordListName: 'js',
     wordListIndex: 0,
     wordLists: [
       {
