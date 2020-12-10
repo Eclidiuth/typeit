@@ -2,10 +2,10 @@
   <div>
     <div id="play" class="container my-5">
       <div class="header">
-        <template v-if="isGameEnded">
-          <the-game-clear-panel time="20" v-on:click.native="restartGame" />
+        <template v-if="gameState === 'cleared'">
+          <the-game-clear-panel time="10" v-on:click.native="restartGame" />
         </template>
-        <template v-else>
+        <template v-else-if="gameState === 'playing' || gameState === 'standby'">
           <the-word-display :word="word" :charCheckCollections="checkWordAndInput" />
           <the-word-input-field v-model="inputFieldValue" />
         </template>
@@ -49,56 +49,54 @@ export default {
   },
   computed: {
     ...mapGetters('play', [
-      'word', 'wordListWords', 'wordListIndex'
+      'gameState',
+      'gameStartedAt',
+      'gameClearedAt',
+      'inputFieldValue',
+      'word',
+      'wordListWords',
+      'wordListIndex'
     ]),
 
     checkWordAndInput(){
       const word = this.word
       const input = this.inputFieldValue
-      let result;
 
-      if(input.length === word.length || input.length > word.length){
-        result = word.split("").map((char, index) => char === input[index])
-      } else if(input.length < word.length){
-        result = input.split("").map((char, index) => char === word[index])
-      }
-
-      return result;
+      return (input.length >= word.length)
+        ? word.split("").map((char, index) => char === input[index])
+        : input.split("").map((char, index) => char === word[index])
     },
-
-    isGameEnded(){
-      const wordListWordsLength = this.wordListWords.length
-      const wordListIndex = this.wordListIndex
-      const isGameEnded = (wordListWordsLength - 1 === wordListIndex)
-        ? true : false
-
-      return isGameEnded
-    },
-    isInputCorrect(){ return this.word === this.inputFieldValue },
-
     inputFieldValue: {
       get(){  return this.$store.getters['play/inputFieldValue'] },
       set(value){ this.$store.dispatch('play/updateInputFieldValue', value) }
     }
   },
-  watch: {
-    inputFieldValue(){
-      const shouldUpdateWordListIndex = this.isInputCorrect
-
-      if(shouldUpdateWordListIndex && !this.isGameEnded){
-        const nextWordListIndex = this.wordListIndex + 1
-
-        this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
-        this.clearInputField()
-      }
-    }
-  },
   methods: {
-    clearInputField(){
-      setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
-    },
     restartGame(){
       this.$store.dispatch('play/resetWordListIndex')
+      this.$store.dispatch('play/updateGameState', 'standby')
+    }
+  },
+  watch: {
+    inputFieldValue(){
+      const gameState = this.gameState
+
+      if(gameState === 'standby'){
+        this.$store.dispatch('play/updateGameStartedAt', new Date())
+        this.$store.dispatch('play/updateGameState', 'playing')
+      }
+
+      if(this.word === this.inputFieldValue){
+        if(this.wordListWords[this.wordListIndex + 1]){
+          const nextWordListIndex = this.wordListIndex + 1
+          this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
+          setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
+        } else {
+          this.$store.dispatch('play/updateGameClearedAt', new Date())
+          this.$store.dispatch('play/updateGameState', 'cleared')
+          setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
+        }
+      }
     }
   }
 }

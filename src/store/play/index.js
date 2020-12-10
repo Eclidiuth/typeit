@@ -2,9 +2,13 @@ export default {
   namespaced: true,
 
   state: () => ({
-    isGameEnded: false,
+    gameState: 'standby',
+    gameStartedAt: null,
+    gameClearedAt: null,
+
     inputFieldValue: '',
-    wordListName: 'js',
+
+    wordListName: 'test',
     wordListIndex: 0,
     wordLists: [
       {
@@ -30,6 +34,9 @@ export default {
     ]
   }),
   getters: {
+    gameState: state => state.gameState,
+    gameStartedAt: state => state.gameStartedAt,
+    gameClearedAt: state => state.gameClearedAt,
     inputFieldValue: state => state.inputFieldValue,
 
     wordLists: state => state.wordLists,
@@ -43,11 +50,21 @@ export default {
     word: (state, getters) => getters.wordListWords[getters.wordListIndex]
   },
   mutations: {
+    setGameState: (state, gameState) => state.gameState = gameState,
+    setGameStartedAt: (state, time) => state.gameStartedAt = time,
+    setGameClearedAt: (state, time) => state.gameClearedAt = time,
+    
     setInputFieldValue: (state, value) => state.inputFieldValue = value,
+
     setWordListIndex: (state, index) => state.wordListIndex = index,
   },
   actions: {
+    updateGameState: ({ commit }, gameState) => commit('setGameState', gameState),
+    updateGameStartedAt: ({ commit}, time) => commit('setGameStartedAt', time),
+    updateGameClearedAt: ({ commit}, time) => commit('setGameClearedAt', time),
+
     updateInputFieldValue: ({ commit }, value) => commit('setInputFieldValue', value),
+
     updateWordListIndex: ({ commit }, index) => commit('setWordListIndex', index),
     resetWordListIndex: ({ commit }) => commit('setWordListIndex', 0)
   }

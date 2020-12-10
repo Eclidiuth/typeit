@@ -1,10 +1,12 @@
 <template>
   <div>
-    <p class="time text-align-center">Cleared! Time: 20 seconds</p>
-    <p class="playAgain text-align-center">
-      <font-awesome-icon icon="undo" />
-      Play again
-    </p>
+    <div class="time text-align-center">Cleared! Time: 20 seconds</div>
+    <div class="playAgain d-flex justify-content-center">
+      <p>
+        <font-awesome-icon icon="undo" />
+        Play again
+      </p>
+    </div>
   </div>
 </template>
 
@@ -13,19 +15,37 @@
 </style>
 <style lang="scss" scoped>
 div {
-  p {
+  div {
     color: $text-white-primary;
     margin: 0;
-    padding: 40px;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
 
     &.time {
       background-color: $colors-green;
       font-size: $fsize-h4;
+      padding: 40px;
     }
 
     &.playAgain {
       background-color: $black;
       font-size: $fsize-h5;
+      padding: 32px;
+
+      p {
+        border-radius: 8px;
+        display: inline-block;
+        flex: 0 1 auto;
+        transition: background .15s;
+        padding: 8px;
+
+        &:hover {
+          background-color: lighten($black, 5%);
+        }
+      }
     }
   }
 }
