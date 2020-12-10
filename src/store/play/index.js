@@ -8,7 +8,7 @@ export default {
 
     inputFieldValue: '',
 
-    wordListName: 'test',
+    wordListName: 'test2',
     wordListIndex: 0,
     wordLists: [
       {

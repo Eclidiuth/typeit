@@ -3,7 +3,7 @@
     <div id="play" class="container my-5">
       <div class="header">
         <template v-if="gameState === 'cleared'">
-          <the-game-clear-panel time="10" v-on:click.native="restartGame" />
+          <the-game-clear-panel :time="getGameClearTime()" v-on:click.native="restartGame" />
         </template>
         <template v-else-if="gameState === 'playing' || gameState === 'standby'">
           <the-word-display :word="word" :charCheckCollections="checkWordAndInput" />
@@ -75,6 +75,13 @@ export default {
     restartGame(){
       this.$store.dispatch('play/resetWordListIndex')
       this.$store.dispatch('play/updateGameState', 'standby')
+    },
+    getGameClearTime(){
+      const gameStartedAt = this.gameStartedAt
+      const gameClearedAt = this.gameClearedAt
+      const ms = gameClearedAt.getTime() - gameStartedAt.getTime()
+
+      return Number((ms / 1000).toFixed(1))
     }
   },
   watch: {

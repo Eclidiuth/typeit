@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="time text-align-center">Cleared! Time: 20 seconds</div>
+    <div class="time text-align-center">Cleared! Time: {{ time }} seconds</div>
     <div class="playAgain d-flex justify-content-center">
       <p>
         <font-awesome-icon icon="undo" />
@@ -56,7 +56,7 @@ export default {
   name: 'TheGameClearPanel',
   props: {
     time: {
-      type: String,
+      type: Number,
       required: true
     }
   }
