@@ -63,7 +63,7 @@ export default {
 
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
-      return record ? record.timeRecords : null
+      return record ? record.timeRecords.sort((a, b) => a.time > b.time ? 1 : -1) : null
     },
     checkWordAndInput(){
       const word = this.word
