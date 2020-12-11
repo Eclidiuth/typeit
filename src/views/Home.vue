@@ -124,8 +124,6 @@ export default {
             date: gameClearedAt_str
           })
 
-          console.log(records.sort((a,b) => a.time > b.time ? 1 : -1))
-
           this.$store.dispatch('ranking/updateTimeRecord', {
             recordName: this.$store.getters['play/wordListName'],
             newTimeRecords: records
