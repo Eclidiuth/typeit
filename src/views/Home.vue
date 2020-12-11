@@ -137,8 +137,10 @@ export default {
     }
   },
   mounted(){
-    const records = JSON.parse(localStorage.getItem('ranking/records'))
-    this.$store.dispatch('ranking/updateRecords', records)
+    const records = localStorage.getItem('ranking/records')
+    if(records){
+      this.$store.dispatch('ranking/updateRecords', JSON.parse(records))
+    }
   }
 }
 </script>
