@@ -10,7 +10,7 @@
       <the-ranking-list-item v-for="(record, index) in records" :key="index" 
         :number="index + 1" :time="record.time" :date="record.date"
         class="rankingList-item" />
-      <template v-if="!records">
+      <template v-if="!records || records.length === 0">
         <p class="p-2">None</p>
       </template>
     </ul>

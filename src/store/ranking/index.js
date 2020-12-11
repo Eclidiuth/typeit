@@ -4,7 +4,7 @@ export default {
   state: () => ({
     records: [
       {
-        name: 'js',
+        name: 'test2',
         timeRecords: [
           {
             time: 10,
@@ -39,7 +39,7 @@ export default {
     setTimeRecord: (state, { recordName, newTimeRecords }) => {
       const index = state.records.findIndex(record => record.name === recordName)
       if(state.records[index]){
-        state.records[index].newTimeRecords = newTimeRecords
+        state.records[index].timeRecords = newTimeRecords
       } else {
         state.records.push({
           name: recordName,

@@ -128,11 +128,17 @@ export default {
             recordName: this.$store.getters['play/wordListName'],
             newTimeRecords: records
           })
+
+          localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['ranking/records']))
         }
 
         setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
       }
     }
+  },
+  mounted(){
+    const records = JSON.parse(localStorage.getItem('ranking/records'))
+    this.$store.dispatch('ranking/updateRecords', records)
   }
 }
 </script>
