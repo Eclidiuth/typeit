@@ -13,12 +13,15 @@ div {
     background-color: $black;
     border: none;
     box-sizing: border-box;
+    border-radius: 0;
     color: $text-white-primary;
     display: block;
     font-size: $fsize-h5;
     text-align: center;
     padding: 40px;
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
 
     &:focus {
       outline: none;

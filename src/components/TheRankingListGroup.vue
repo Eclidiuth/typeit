@@ -7,9 +7,12 @@
         <span class="rankingList-recordTime">Time</span>
         <span class="rankingList-recordDate">Date</span>
       </li>
-      <the-ranking-list-item v-for="record in records" :key="record.number" 
-        :number="record.number" :time="record.time" :date="record.date"
+      <the-ranking-list-item v-for="(record, index) in records" :key="index" 
+        :number="index + 1" :time="record.time" :date="record.date"
         class="rankingList-item" />
+      <template v-if="!records">
+        <p class="p-2">None</p>
+      </template>
     </ul>
   </div>
 </template>
@@ -47,10 +50,10 @@ div {
           text-align: center;
         }
         .rankingList-recordTime {
-          flex: 1 1 50%;
+          flex: 1 1 65%;
         }
         .rankingList-recordDate {
-          flex: 1 1 45%;
+          flex: 1 1 30%;
         }
     }
 
@@ -71,26 +74,10 @@ export default {
   components: {
     TheRankingListItem
   },
-  data(){
-    return ({
-      records: [
-        {
-          number: 1,
-          time  : 20.0,
-          date  : new Date()  
-        },
-        {
-          number: 2,
-          time  : 25.0,
-          date  : new Date()  
-        },
-        {
-          number: 3,
-          time  : 30.0,
-          date  : new Date()  
-        },
-      ]
-    })
+  props: {
+    records: {
+      type: Array || null
+    }
   }
 }
 </script>

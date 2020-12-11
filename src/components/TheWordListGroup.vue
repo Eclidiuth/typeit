@@ -2,7 +2,7 @@
   <div>
     <h3>Words | JavaScript</h3>
     <ul>
-      <the-word-list-item v-for="word in words" :key="word" class="mr-1">
+      <the-word-list-item v-for="word in words" :key="word" class="mr-1 mb-1">
         {{ word }}
       </the-word-list-item>
     </ul>
