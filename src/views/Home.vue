@@ -118,7 +118,7 @@ export default {
           const seconds = ('0' + gameStartedAt.getSeconds()).slice(-2)
           const gameClearedAt_str = `${year}/${month}/${date} ${hour}:${minute}:${seconds}`
 
-          const records = this.timeRecords
+          const records = this.timeRecords ? this.timeRecords : []
           records.push({
             time: this.getGameClearTime(),
             date: gameClearedAt_str

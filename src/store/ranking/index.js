@@ -4,7 +4,7 @@ export default {
   state: () => ({
     records: [
       {
-        name: 'test2',
+        name: 'js',
         timeRecords: [
           {
             time: 10,
@@ -37,15 +37,19 @@ export default {
   mutations: {
     setRecords: (state, newRecords) => state.records = newRecords,
     setTimeRecord: (state, { recordName, newTimeRecords }) => {
-      console.log(recordName, newTimeRecords)
       const index = state.records.findIndex(record => record.name === recordName)
-      state.records[index]
-        ? state.records[index].newTimeRecords = newTimeRecords
-        : new Error(`state.records[index] not found.`)
+      if(state.records[index]){
+        state.records[index].newTimeRecords = newTimeRecords
+      } else {
+        state.records.push({
+          name: recordName,
+          timeRecords: newTimeRecords
+        })
+      }
     }
   },
   actions: {
     updateRecords: ({ commit }, newRecords) => commit('setRecords', newRecords),
-    updateTimeRecord: ({ commit }, payload) => commit('setTimeRecord', payload)
+    updateTimeRecord: ({ commit }, payload) => commit('setTimeRecord', payload),
   }
 }
