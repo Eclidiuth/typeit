@@ -13,7 +13,7 @@
       <div class="main pb-3">
         <div class="container-90">
           <the-word-list-group :words="wordListWords" class="mt-3" />
-          <the-ranking-list-group class="mt-3 mb-3" /> 
+          <the-ranking-list-group :records="timeRecords" class="mt-3 mb-3" /> 
         </div>
       </div>
     </div>
@@ -55,9 +55,16 @@ export default {
       'inputFieldValue',
       'word',
       'wordListWords',
+      'wordListName',
       'wordListIndex'
     ]),
 
+    ...mapGetters('ranking', ['findRecordByName']),
+
+    timeRecords(){
+      const record = this.findRecordByName(this.wordListName)
+      return record ? record.timeRecords.sort((a, b) => a.time > b.time ? 1 : -1) : null
+    },
     checkWordAndInput(){
       const word = this.word
       const input = this.inputFieldValue
@@ -67,7 +74,7 @@ export default {
         : input.split("").map((char, index) => char === word[index])
     },
     inputFieldValue: {
-      get(){  return this.$store.getters['play/inputFieldValue'] },
+      get(){      return this.$store.getters['play/inputFieldValue'] },
       set(value){ this.$store.dispatch('play/updateInputFieldValue', value) }
     }
   },
@@ -94,17 +101,44 @@ export default {
       }
 
       if(this.word === this.inputFieldValue){
-        if(this.wordListWords[this.wordListIndex + 1]){
-          const nextWordListIndex = this.wordListIndex + 1
+        const nextWordListIndex = this.wordListIndex + 1
+
+        if(this.wordListWords[nextWordListIndex]){
           this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
-          setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
         } else {
           this.$store.dispatch('play/updateGameClearedAt', new Date())
           this.$store.dispatch('play/updateGameState', 'cleared')
-          setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
+
+          const gameStartedAt = this.$store.getters['play/gameStartedAt']
+          const year    = gameStartedAt.getFullYear()
+          const month   = ('0' + gameStartedAt.getMonth() + 1).slice(-2)
+          const date    = ('0' + gameStartedAt.getDate() + 1).slice(-2)
+          const hour    = ('0' + gameStartedAt.getHours()).slice(-2)
+          const minute  = ('0' + gameStartedAt.getMinutes()).slice(-2)
+          const seconds = ('0' + gameStartedAt.getSeconds()).slice(-2)
+          const gameClearedAt_str = `${year}/${month}/${date} ${hour}:${minute}:${seconds}`
+
+          const records = this.timeRecords ? this.timeRecords : []
+          records.push({
+            time: this.getGameClearTime(),
+            date: gameClearedAt_str
+          })
+
+          this.$store.dispatch('ranking/updateTimeRecord', {
+            recordName: this.$store.getters['play/wordListName'],
+            newTimeRecords: records
+          })
+
+          localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['ranking/records']))
         }
+
+        setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
       }
     }
+  },
+  mounted(){
+    const records = JSON.parse(localStorage.getItem('ranking/records'))
+    this.$store.dispatch('ranking/updateRecords', records)
   }
 }
 </script>
