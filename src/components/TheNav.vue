@@ -5,10 +5,10 @@
         <router-link to="/">TypeIt</router-link>
       </h1>
       <ul>
-        <li class="active">
-          <router-link to="/play">Play</router-link>
+        <li :class="{active: this.$route.path === '/'}">
+          <router-link to="/">Play</router-link>
         </li>
-        <li>
+        <li :class="{active: this.$route.path === '/rankings'}">
           <router-link to="/rankings">Rankings</router-link>
         </li>
         <li>
