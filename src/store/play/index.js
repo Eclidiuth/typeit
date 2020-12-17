@@ -47,7 +47,12 @@ export default {
       return wordList ? wordList[0] : null
     },
     wordListWords: (state, getters) => getters.wordList.words,
-    word: (state, getters) => getters.wordListWords[getters.wordListIndex]
+    word: (state, getters) => getters.wordListWords[getters.wordListIndex],
+
+    findWordListByName: (state, getters) => wordListName => {
+      const wordList = getters.wordLists.filter(list => list.name === wordListName)
+      return wordList ? wordList[0] : null
+    }
   },
   mutations: {
     setGameState: (state, gameState) => state.gameState = gameState,

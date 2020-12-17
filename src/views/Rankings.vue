@@ -1,26 +1,24 @@
 <template>
-  <div>
-    <div id="rankings" class="container my-5">
-      <div class="container-90">
-        <h1>Rankings</h1>
-        <div class="mb-3" v-for="(record, index) in records" :key="index">
-          <h2>{{ record.name }}</h2>
-          <table>
-            <tr>
-              <td class="timeRecord-no">No.</td>
-              <td class="timeRecord-time">Time</td>
-              <td class="timeRecord-date">Date</td>
-            </tr>
-            <tr v-for="(timeRecord, index) in record.timeRecords" :key="index">
-              <td class="timeRecord-no">{{ index + 1}}</td>
-              <td class="timeRecord-time">{{ timeRecord.time }} seconds</td>
-              <td class="timeRecord-date">{{ timeRecord.date }}</td>
-            </tr>
-          </table>
-        </div>
+  <the-content id="rankings">
+    <div class="container-90">
+      <h1>Rankings</h1>
+      <div class="mb-3" v-for="(record, index) in records" :key="index">
+        <h2>{{ record.name }}</h2>
+        <table>
+          <tr>
+            <td class="timeRecord-no">No.</td>
+            <td class="timeRecord-time">Time</td>
+            <td class="timeRecord-date">Date</td>
+          </tr>
+          <tr v-for="(timeRecord, index) in record.timeRecords" :key="index">
+            <td class="timeRecord-no">{{ index + 1}}</td>
+            <td class="timeRecord-time">{{ timeRecord.time }} seconds</td>
+            <td class="timeRecord-date">{{ timeRecord.date }}</td>
+          </tr>
+        </table>
       </div>
     </div>
-  </div>
+  </the-content>
 </template>
 
 <style lang="scss" scoped>
@@ -28,9 +26,7 @@
 </style>
 <style lang="scss" scoped>
 #rankings {
-  background-color: $white;
   padding: 48px 0;
-  min-width: 640px;
 
   h1 {
     font-weight: normal;
@@ -55,7 +51,6 @@
       }
 
       td {
-        font-size: $fsize-body-1;
         padding: 16px;
 
         &.timeRecord-no {
@@ -68,7 +63,6 @@
         }
 
         &.timeRecord-date {
-          font-size: $fsize-body-2;
           flex: 0 1 20%;
         }
       }
@@ -79,8 +73,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import TheContent from '../components/TheContent.vue'
 
 export default {
+  components: { TheContent },
   name: 'Rankings',
   computed: {
     ...mapGetters('ranking', ['records'])
