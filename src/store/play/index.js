@@ -8,19 +8,19 @@ export default {
 
     inputFieldValue: '',
 
-    wordListName: 'js',
+    wordListName: 'JavaScript config files',
     wordListIndex: 0,
     wordLists: [
       {
-        name: 'test',
+        name: 'テスト用データ1',
         words: ['a', 'b', 'c']
       },
       {
-        name: 'test2',
+        name: 'テスト用データ2',
         words: ['ab', 'cd', 'ef']
       },
       {
-        name: 'js',
+        name: 'JavaScript config files',
         words: [
           'webpack.config.js',
           'postcss.config.js',

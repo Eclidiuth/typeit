@@ -4,7 +4,7 @@ export default {
   state: () => ({
     records: [
       {
-        name: 'test2',
+        name: 'テスト用データ2',
         timeRecords: [
           {
             time: 10,
@@ -21,6 +21,23 @@ export default {
           {
             time: 20,
             date: '2020/12/11 00:01:00'
+          },
+        ]
+      },
+      {
+        name: 'JavaScript config files',
+        timeRecords: [
+          {
+            time: 20.1,
+            date: '2020/12/16 00:00:00'
+          },
+          {
+            time: 22.2,
+            date: '2020/12/16 00:05:00'
+          },
+          {
+            time: 24.0,
+            date: '2020/12/16 00:10:00'
           },
         ]
       }

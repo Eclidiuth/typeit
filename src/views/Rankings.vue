@@ -12,7 +12,7 @@
               <td class="timeRecord-date">Date</td>
             </tr>
             <tr v-for="(timeRecord, index) in record.timeRecords" :key="index">
-              <td class="timeRecord-no">{{ index }}</td>
+              <td class="timeRecord-no">{{ index + 1}}</td>
               <td class="timeRecord-time">{{ timeRecord.time }} seconds</td>
               <td class="timeRecord-date">{{ timeRecord.date }}</td>
             </tr>
@@ -39,7 +39,7 @@
   }
 
   h2 {
-    font-size: $fsize-body-2;
+    font-size: $fsize-body-1;
     font-weight: normal;
   }
 
@@ -55,10 +55,12 @@
       }
 
       td {
+        font-size: $fsize-body-1;
         padding: 16px;
 
         &.timeRecord-no {
-          flex: 0 1 56px;
+          flex: 0 1 48px;
+          text-align: center;
         }
 
         &.timeRecord-time {
@@ -66,7 +68,8 @@
         }
 
         &.timeRecord-date {
-          flex: 0 1 15%;
+          font-size: $fsize-body-2;
+          flex: 0 1 20%;
         }
       }
     }
