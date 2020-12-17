@@ -1,7 +1,7 @@
 <template>
   <the-content id="rankings">
     <div class="container-90">
-      <h1>Rankings</h1>
+      <the-page-title>Rankings</the-page-title>
       <div class="mb-3" v-for="(record, index) in records" :key="index">
         <h2>{{ record.name }}</h2>
         <table>
@@ -27,12 +27,6 @@
 <style lang="scss" scoped>
 #rankings {
   padding: 48px 0;
-
-  h1 {
-    font-weight: normal;
-    margin: 0;
-    margin-bottom: 48px;
-  }
 
   h2 {
     font-size: $fsize-body-1;
@@ -73,10 +67,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ThePageTitle from '../components/ThePageTitle.vue'
 import TheContent from '../components/TheContent.vue'
 
 export default {
-  components: { TheContent },
+  components: {
+    TheContent,
+    ThePageTitle
+  },
   name: 'Rankings',
   computed: {
     ...mapGetters('ranking', ['records'])

@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
 h1 {
-  font-weight: normal;
+  font-weight: 300;
   margin: 0;
   margin-bottom: 48px;
 }

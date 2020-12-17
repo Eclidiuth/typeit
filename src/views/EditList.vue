@@ -3,26 +3,41 @@
     <div class="container-90">
       <the-page-title>Edit list "{{ $route.params.id }}"</the-page-title>
       <template v-if="words">
-        <div class="wordList">
-          <div class="wordList-header">
-            <div class="wordList-word">Word</div>
-            <div class="wordList-wordLength">Length</div>
-            <div class="wordList-delete">Delete</div>
-          </div>
-          <div v-for="(word, index) in words" :key="index" class="wordList-item">
-            <div class="wordList-word">{{ word }}</div>
-            <div class="wordList-wordLength">{{ word.length }}</div>
-            <div class="wordList-delete" @click="deleteWord(index)">Delete</div>
-          </div>
-          <div class="wordList-addWordForm">
-            <input v-model="addWordFormInputValue" type="text">
-            <p>Length : {{ addWordFormInputValue.length }}</p>
-          </div>
-        </div>
-        <div>
-          <button>Save changes</button>
-          <button>Cancel</button>
-        </div>
+        <ul class="wordList">
+          <li class="wordList-header wordList-item">
+            <div class="wordList-item-word">
+              <span>Word</span>
+              </div>
+            <div class="wordList-item-wordLength">
+              <span>Length</span>
+              </div>
+            <div class="wordList-item-wordDelete">
+              <span>Delete</span>
+              </div>
+          </li>
+          <li v-for="(word, index) in words" :key="index" class="wordList-item">
+            <div class="wordList-item-word">
+              <span>{{ word }}</span>
+            </div>
+            <div class="wordList-item-wordLength">
+              <span>{{ word.length }}</span>
+            </div>
+            <div class="wordList-item-wordDelete">
+              <span @click="deleteWord(index)">Delete</span>
+            </div>
+          </li>
+          <li class="wordList-addWord wordList-item">
+            <div class="wordList-item-wordInputForm">
+              <input v-model="addWordFormInput" type="text" placeholder="Input word here">
+            </div>
+            <div class="wordList-item-wordLength">
+              <span>{{ addWordFormInput.length }}</span>
+            </div>
+            <div class="wordList-item-addWord">
+              <span @click="addWord()">Add</span>
+            </div>
+          </li>
+        </ul>
       </template>
       <template v-else>
         <p>Error!</p>
@@ -40,38 +55,57 @@
   padding: 48px 0;
 
   .wordList {
-    & > div:nth-child(odd) {
-      background-color: $white-secondary;
-    }
-    
-    .wordList-header {
-      display: flex;
-    }
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
     .wordList-item {
       display: flex;
-    }
 
-    .wordList-word,
-    .wordList-wordLength,
-    .wordList-delete {
-      padding: 16px;
-    }
+      &:nth-child(odd) {
+        background-color: $white-secondary;
+      }
 
-    .wordList-word {
-      flex: 1;
-    }
+      .wordList-item-word span,
+      .wordList-item-wordLength span,
+      .wordList-item-wordDelete span,
+      .wordList-item-wordInputForm input,
+      .wordList-item-addWord span {
+        display: block;
+        padding: 16px;
+      }
 
-    .wordList-wordLength {
-      width: 20%;
-    }
+      .wordList-item-word,
+      .wordList-item-wordInputForm {
+        width: 70%;
+      }
 
-    .wordList-delete {
-      &:hover {
-        text-decoration: underline;
+      .wordList-item-wordLength {
+        width: 20%;
+      }
+
+      .wordList-item-wordDelete,
+      .wordList-item-addWord {
+        width: 10%;
+
+        span {
+          &:hover {
+            text-decoration: underline;
+          } 
+        }
+      }
+
+      .wordList-item-wordInputForm {
+        input {
+          background: transparent;
+          box-sizing: border-box;
+          border: 0;
+          margin: 8px;
+          padding: 8px;
+          width: calc(100% - 16px);
+        }
       }
     }
-
   }
 }
 </style>
@@ -89,8 +123,8 @@ export default {
   },
   data(){
     return {
-      addWordFormInputValue: "",
-      words: this.originalWords
+      addWordFormInput: "",
+      words: null
     }
   },
   computed: {
@@ -104,10 +138,16 @@ export default {
   methods: {
     deleteWord(index){
       this.words.splice(index, 1)
+    },
+    addWord(){
+      const inputValue = this.addWordFormInput.trim()
+
+      if(inputValue!== "") this.words.push(inputValue)
+      this.addWordFormInput = ""
     }
   },
   mounted(){
-    this.words = this.originalWords
+    this.words = this.originalWords.slice()
   }
 }
 </script>
