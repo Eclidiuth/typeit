@@ -12,7 +12,7 @@
               <span>Length</span>
               </div>
             <div class="wordList-item-wordDelete">
-              <span>Delete</span>
+              <span>Action</span>
               </div>
           </li>
           <li v-for="(word, index) in words" :key="index" class="wordList-item">
@@ -38,6 +38,10 @@
             </div>
           </li>
         </ul>
+        <div class="my-3">
+          <t-button @click.native="saveChanges()" class="mr-2">Save changes</t-button>
+          <t-button @click.native="backToEditPage()">Cancel</t-button>
+        </div>
       </template>
       <template v-else>
         <p>Error!</p>
@@ -113,13 +117,15 @@
 <script>
 import TheContent from '../components/TheContent.vue'
 import ThePageTitle from '@/components/ThePageTitle.vue'
+import TButton from '@/components/TButton.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'EditList',
   components: {
     TheContent,
-    ThePageTitle
+    ThePageTitle,
+    TButton,
   },
   data(){
     return {
@@ -144,9 +150,25 @@ export default {
 
       if(inputValue!== "") this.words.push(inputValue)
       this.addWordFormInput = ""
+    },
+    saveChanges(){
+      const wordListName = this.$route.params.id
+      const words = this.words
+      this.$store.dispatch('play/updateWordListWords', {
+        wordListName: wordListName,
+        wordListWords: words
+      })
+
+      localStorage.setItem('play/wordLists', JSON.stringify(this.wordLists))
+    },
+    backToEditPage(){
+      this.$router.push('/edit/')
     }
   },
   mounted(){
+    if(localStorage.getItem('play/wordLists')){
+      this.$store.dispatch('play/updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
+    }
     this.words = this.originalWords.slice()
   }
 }

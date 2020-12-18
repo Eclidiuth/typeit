@@ -6,7 +6,7 @@
         <div class="wordList-item">
           <div class="wordList-name">Name</div>
           <div class="wordList-length">List length</div>
-          <div class="wordList-edit">Edit</div>
+          <div class="wordList-edit">Action</div>
         </div>
         <div v-for="(wordList, index) in wordLists" :key="index" class="wordList-item">
           <div class="wordList-name">{{ wordList.name }}</div>

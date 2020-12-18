@@ -62,6 +62,9 @@ export default {
     setInputFieldValue: (state, value) => state.inputFieldValue = value,
 
     setWordListIndex: (state, index) => state.wordListIndex = index,
+    setWordLists: (state, wordLists) => state.wordLists = wordLists,
+
+    setWordListWords: (state, payload) => state.wordLists[payload.index].words = payload.wordListWords
   },
   actions: {
     updateGameState: ({ commit }, gameState) => commit('setGameState', gameState),
@@ -71,6 +74,13 @@ export default {
     updateInputFieldValue: ({ commit }, value) => commit('setInputFieldValue', value),
 
     updateWordListIndex: ({ commit }, index) => commit('setWordListIndex', index),
-    resetWordListIndex: ({ commit }) => commit('setWordListIndex', 0)
+    updateWordLists: ({ commit }, wordLists) => commit('setWordLists', wordLists),
+    resetWordListIndex: ({ commit }) => commit('setWordListIndex', 0),
+
+    updateWordListWords: ({ commit, getters}, payload) => {
+      const wordList = getters.findWordListByName(payload.wordListName)
+      const wordListIndex = getters.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
+      wordList ? commit('setWordListWords', { index: wordListIndex, wordListWords: payload.wordListWords }) : new Error('Word list not found')
+    }
   }
 }
