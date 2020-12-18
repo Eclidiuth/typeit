@@ -4,13 +4,23 @@
       <the-page-title>Edit</the-page-title>
       <div class="wordList">
         <div class="wordList-item">
-          <div class="wordList-name">Name</div>
-          <div class="wordList-length">List length</div>
-          <div class="wordList-edit">Action</div>
+          <div class="wordList-name">
+            <span>Name</span>
+          </div>
+          <div class="wordList-length">
+            <span>List length</span>
+          </div>
+          <div class="wordList-edit">
+            <span>Action</span>
+          </div>
         </div>
         <div v-for="(wordList, index) in wordLists" :key="index" class="wordList-item">
-          <div class="wordList-name">{{ wordList.name }}</div>
-          <div class="wordList-length">{{ wordList.words.length }}</div>
+          <div class="wordList-name">
+            <span>{{ wordList.name }}</span>
+          </div>
+          <div class="wordList-length">
+            <span>{{ wordList.words.length }}</span>
+          </div>
           <div class="wordList-editLink">
             <router-link :to="`/edit/${wordList.name}`">Edit</router-link>
           </div>
@@ -40,22 +50,25 @@
         background-color: $white-secondary;
       }
 
-      .wordList-name {
-        flex: 1;
+      .wordList-name span,
+      .wordList-length span,
+      .wordList-edit span {
+        display: block;
         padding: 16px;
+      }
+
+      .wordList-name {
+        width: 70%;
       }
 
       .wordList-length {
-        flex: 0 1 20%;
-        padding: 16px;
+        width: 20%;
       }
 
-      .wordList-edit {
-        padding: 16px;
-      }
 
       .wordList-editLink {
         display: flex;
+        width: 10%;
         
         a {
           color: $text-black-primary;
