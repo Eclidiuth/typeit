@@ -50,10 +50,10 @@ div {
           text-align: center;
         }
         .rankingList-recordTime {
-          flex: 1 1 65%;
+          flex: 1 1 55%;
         }
         .rankingList-recordDate {
-          flex: 1 1 30%;
+          flex: 1 1 40%;
         }
     }
 

@@ -30,12 +30,12 @@ li {
   }
   .rankingList-recordTime {
     font-size: $fsize-body-1;
-    flex: 1 1 65%;
+    flex: 1 1 55%;
   }
   .rankingList-recordDate {
     color: $text-black-secondary;
     font-size: $fsize-body-2;
-    flex: 1 1 30%;
+    flex: 1 1 40%;
   }
 }
 </style>

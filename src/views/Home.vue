@@ -12,19 +12,23 @@
     <div class="main pb-3">
       <div class="container-90">
         <the-word-list-group :words="wordListWords" class="mt-3" />
-        <the-ranking-list-group :records="timeRecords" class="mt-3 mb-3" /> 
+        <div class="d-flex justify-content-space-between">
+          <the-ranking-list-group :records="timeRecords" class="my-3" style="width:55%" /> 
+          <the-select-word-list-group :wordLists="wordLists" class="my-3" style="width:40%" />
+        </div>
       </div>
     </div>
   </the-content>
 </template>
 
 <script>
-import TheContent from '@/components/TheContent'
-import TheGameClearPanel    from '@/components/TheGameClearPanel.vue'
-import TheWordDisplay       from '@/components/TheWordDisplay.vue'
-import TheWordInputField    from '@/components/TheWordInputField.vue'
-import TheWordListGroup     from '@/components/TheWordListGroup.vue'
-import TheRankingListGroup  from '@/components/TheRankingListGroup.vue'
+import TheContent             from '@/components/TheContent'
+import TheGameClearPanel      from '@/components/TheGameClearPanel.vue'
+import TheWordDisplay         from '@/components/TheWordDisplay.vue'
+import TheWordInputField      from '@/components/TheWordInputField.vue'
+import TheWordListGroup       from '@/components/TheWordListGroup.vue'
+import TheRankingListGroup    from '@/components/TheRankingListGroup.vue'
+import TheSelectWordListGroup from '@/components/TheSelectWordListGroup.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -35,7 +39,8 @@ export default {
     TheWordDisplay,
     TheWordInputField,
     TheWordListGroup,
-    TheRankingListGroup
+    TheRankingListGroup,
+    TheSelectWordListGroup
   },
   computed: {
     ...mapGetters('play', [
@@ -44,6 +49,7 @@ export default {
       'gameClearedAt',
       'inputFieldValue',
       'word',
+      'wordLists',
       'wordListWords',
       'wordListName',
       'wordListIndex'
