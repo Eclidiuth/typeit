@@ -12,8 +12,6 @@ export default {
     gameStartedAt: null,
     gameClearedAt: null,
 
-    inputFieldValue: '',
-
     wordListName: 'JavaScript config files',
     wordListIndex: 0,
     wordLists: [
@@ -43,7 +41,6 @@ export default {
     gameState: state => state.gameState,
     gameStartedAt: state => state.gameStartedAt,
     gameClearedAt: state => state.gameClearedAt,
-    inputFieldValue: state => state.inputFieldValue,
 
     wordLists: state => state.wordLists,
     wordListName: state => state.wordListName,
@@ -65,8 +62,6 @@ export default {
     setGameStartedAt: (state, time)      => state.gameStartedAt = time,
     setGameClearedAt: (state, time)      => state.gameClearedAt = time,
     
-    setInputFieldValue: (state, value) => state.inputFieldValue = value,
-
     setWordListName : (state, wordListName) => state.wordListName = wordListName,
     setWordListIndex: (state, index)     => state.wordListIndex = index,
     setWordLists    : (state, wordLists) => state.wordLists = wordLists,
@@ -78,19 +73,14 @@ export default {
     updateGameStartedAt: ({ commit}, time)       => commit('setGameStartedAt', time),
     updateGameClearedAt: ({ commit}, time)       => commit('setGameClearedAt', time),
 
-    updateInputFieldValue: ({ commit }, value) => commit('setInputFieldValue', value),
-
     updateWordListName : ({ commit }, wordListName)  => commit('setWordListName', wordListName),
     updateWordListIndex: ({ commit }, index)         => commit('setWordListIndex', index),
     updateWordLists    :     ({ commit }, wordLists) => commit('setWordLists', wordLists),
     resetWordListIndex : ({ commit })                => commit('setWordListIndex', 0),
 
     updateWordListWords: ({ commit, getters}, payload) => {
-      const wordList = getters.findWordListByName(payload.wordListName)
       const wordListIndex = getters.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
-      wordList
-      ? commit('setWordListWords', { index: wordListIndex, wordListWords: payload.wordListWords })
-      : new Error('Word list not found')
+      commit('setWordListWords', { index: wordListIndex, wordListWords: payload.wordListWords })
     }
   }
 }

@@ -42,12 +42,16 @@ export default {
     TheRankingListGroup,
     TheSelectWordListGroup
   },
+  data(){
+    return {
+      inputFieldValue: ''
+    }
+  },
   computed: {
     ...mapGetters('play', [
       'gameState',
       'gameStartedAt',
       'gameClearedAt',
-      'inputFieldValue',
       'word',
       'wordLists',
       'wordListWords',
@@ -69,10 +73,6 @@ export default {
         ? word.split("").map((char, index) => char === input[index])
         : input.split("").map((char, index) => char === word[index])
     },
-    inputFieldValue: {
-      get(){      return this.$store.getters['play/inputFieldValue'] },
-      set(value){ this.$store.dispatch('play/updateInputFieldValue', value) }
-    }
   },
   methods: {
     restartGame(){
