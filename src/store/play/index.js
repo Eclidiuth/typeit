@@ -1,8 +1,14 @@
+const GAME_STATE = {
+  STAND_BY: 'standby',
+  PLAYING: 'playing',
+  CLEARED: 'cleared'
+}
+
 export default {
   namespaced: true,
 
   state: () => ({
-    gameState: 'standby',
+    gameState: GAME_STATE.STAND_BY,
     gameStartedAt: null,
     gameClearedAt: null,
 
@@ -61,6 +67,7 @@ export default {
     
     setInputFieldValue: (state, value) => state.inputFieldValue = value,
 
+    setWordListName : (state, wordListName) => state.wordListName = wordListName,
     setWordListIndex: (state, index)     => state.wordListIndex = index,
     setWordLists    : (state, wordLists) => state.wordLists = wordLists,
 
@@ -73,6 +80,7 @@ export default {
 
     updateInputFieldValue: ({ commit }, value) => commit('setInputFieldValue', value),
 
+    updateWordListName : ({ commit }, wordListName)  => commit('setWordListName', wordListName),
     updateWordListIndex: ({ commit }, index)         => commit('setWordListIndex', index),
     updateWordLists    :     ({ commit }, wordLists) => commit('setWordLists', wordLists),
     resetWordListIndex : ({ commit })                => commit('setWordListIndex', 0),

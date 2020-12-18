@@ -21,7 +21,9 @@
           <span>{{ wordList.words.length }}</span>
         </div>
         <div class="wordList-action">
-          <span>Play</span>
+          <span @click="selectWordList(wordList.name)">
+            {{ wordList.name === wordListName ? 'Selected' : 'Play'}}
+          </span>
         </div>
       </div>
     </div>
@@ -55,6 +57,12 @@
 
     .wordList-action {
       width: 20%;
+
+      &:hover {
+        span {
+          text-decoration: underline;
+        }
+      }
     }
   
     .wordList-listName span,
@@ -69,12 +77,23 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'TheSelectWordListGroup',
   props: {
     wordLists: {
       type: Array,
       required: true
+    }
+  },
+  computed: {
+    ...mapGetters('play', ['wordListName'])
+  },
+  methods: {
+    selectWordList(wordListName){
+      this.$store.dispatch('play/updateWordListName', wordListName)
+      this.$store.dispatch('play/updateWordListIndex', 0)
+      this.$store.dispatch('play/updateGameState', 'standby')
     }
   }
 }
