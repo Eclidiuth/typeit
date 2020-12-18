@@ -108,7 +108,7 @@ export default {
           const gameStartedAt = this.$store.getters['play/gameStartedAt']
           const year    = gameStartedAt.getFullYear()
           const month   = ('0' + gameStartedAt.getMonth() + 1).slice(-2)
-          const date    = ('0' + gameStartedAt.getDate() + 1).slice(-2)
+          const date    = ('0' + gameStartedAt.getDate()).slice(-2)
           const hour    = ('0' + gameStartedAt.getHours()).slice(-2)
           const minute  = ('0' + gameStartedAt.getMinutes()).slice(-2)
           const seconds = ('0' + gameStartedAt.getSeconds()).slice(-2)
@@ -128,7 +128,7 @@ export default {
           localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['ranking/records']))
         }
 
-        setTimeout(() => this.$store.dispatch('play/updateInputFieldValue', ''))
+        setTimeout(() => this.inputFieldValue = "")
       }
     }
   },
