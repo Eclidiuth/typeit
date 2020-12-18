@@ -39,6 +39,7 @@
           </li>
         </ul>
         <div class="my-3">
+          <p v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</p>
           <t-button @click.native="saveChanges()" class="mr-2">Save changes</t-button>
           <t-button @click.native="backToEditPage()">Cancel</t-button>
         </div>
@@ -130,7 +131,7 @@ export default {
   data(){
     return {
       addWordFormInput: "",
-      words: null
+      words: null,
     }
   },
   computed: {
@@ -139,6 +140,9 @@ export default {
     originalWords(){
       const wordList = this.findWordListByName(this.$route.params.id)
       return wordList ? wordList.words : null
+    },
+    isWordListWordsEmpty(){
+      return this.words.length === 0
     }
   },
   methods: {
@@ -152,14 +156,15 @@ export default {
       this.addWordFormInput = ""
     },
     saveChanges(){
-      const wordListName = this.$route.params.id
-      const words = this.words
-      this.$store.dispatch('play/updateWordListWords', {
-        wordListName: wordListName,
-        wordListWords: words
-      })
-
-      localStorage.setItem('play/wordLists', JSON.stringify(this.wordLists))
+      if(!this.isWordListEmpty){
+        const wordListName = this.$route.params.id
+        this.$store.dispatch('play/updateWordListWords', {
+          wordListName: wordListName,
+          wordListWords: this.words
+        })
+  
+        localStorage.setItem('play/wordLists', JSON.stringify(this.wordLists))
+      }
     },
     backToEditPage(){
       this.$router.push('/edit/')
