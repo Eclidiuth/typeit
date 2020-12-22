@@ -156,7 +156,7 @@ export default {
       this.addWordFormInput = ""
     },
     saveChanges(){
-      if(!this.isWordListEmpty){
+      if(!this.isWordListWordsEmpty){
         const wordListName = this.$route.params.id
         this.$store.dispatch('play/updateWordListWords', {
           wordListName: wordListName,

@@ -99,6 +99,12 @@ export default {
   },
   computed: {
     ...mapGetters('play', ['wordLists'])
+  },
+  mounted(){
+    if(localStorage.getItem('play/wordLists')){
+      this.$store.dispatch('play/updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
+    }
+    this.words = this.originalWords.slice()
   }
 }
 </script>
