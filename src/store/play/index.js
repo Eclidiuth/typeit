@@ -34,6 +34,21 @@ export default {
           '.babelrc',
           '.eslintrc'
         ]
+      },
+      {
+        name: '@reduxjs/toolkit',
+        words: [
+          "import { configureStore } from '@reduxjs/toolkit'",
+          "import { createSlice } from '@reduxjs/toolkit'",
+          "import { Provider } from 'react-redux'",
+          "import { useSelector, useDispatch } from '@reduxjs/toolkit'",
+          "export const { actionCreator1 } = hogeSlice.actions",
+          "export default hogeSlice.reducer",
+          "export default configureStore({reducer: { hoge: hogeReducer }})",
+          "export const selectHoge = state => state.hoge.value",
+          "const hoge = useSelector(selectHoge)",
+          "const dispatch = useDispatch()"
+        ]
       }
     ]
   }),
