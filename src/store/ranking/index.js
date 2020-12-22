@@ -40,6 +40,15 @@ export default {
             date: '2020/12/16 00:10:00'
           },
         ]
+      },
+      {
+        name: 'Redux',
+        timeRecords: [
+          {
+            time: 135.1,
+            date: '2020/12/22 16:37:48'
+          }
+        ]
       }
     ]
   }),

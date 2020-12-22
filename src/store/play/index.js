@@ -36,7 +36,7 @@ export default {
         ]
       },
       {
-        name: '@reduxjs/toolkit',
+        name: 'Redux',
         words: [
           "import { configureStore } from '@reduxjs/toolkit'",
           "import { createSlice } from '@reduxjs/toolkit'",
