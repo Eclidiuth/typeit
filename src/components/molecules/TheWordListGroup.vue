@@ -1,11 +1,9 @@
 <template>
   <div>
     <h3 class="pt-6 pb-4">Words | JavaScript</h3>
-    <ul>
-      <the-word-list-item v-for="word in words" :key="word" class="mr-2 mb-2">
-        {{ word }}
-      </the-word-list-item>
-    </ul>
+    <v-chip-group>
+      <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
+    </v-chip-group>
   </div>
 </template>
 
@@ -26,13 +24,8 @@ div {
 </style>
 
 <script>
-import TheWordListItem from '@/components/TheWordListItem.vue'
-
 export default {
   name: 'TheWordListGroup',
-  components: {
-    TheWordListItem
-  },
   props: {
     words: {
       type: Array,

@@ -15,8 +15,14 @@
     <div class="main pb-3">
       <div class="w-11/12 mx-auto">
         <the-word-list-group :words="wordListWords" />
-        <the-ranking-list-group :records="timeRecords" />
-        <the-select-word-list-group :wordLists="wordLists" />
+        <div class="xl:flex">
+          <div class="xl:w-1/2">
+            <the-ranking-list-group :records="timeRecords" class="md:w-11/12" />
+          </div>
+          <div class="xl:w-1/2">
+            <the-select-word-list-group :wordLists="wordLists" class="md:w-11/12" />
+          </div>
+        </div>
       </div>
     </div>
   </ti-sheet>

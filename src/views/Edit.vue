@@ -2,30 +2,26 @@
   <ti-sheet id="edit">
     <div class="w-11/12 mx-auto">
       <the-page-title>Edit</the-page-title>
-      <div class="wordList">
-        <div class="wordList-item">
-          <div class="wordList-name">
-            <span>Name</span>
-          </div>
-          <div class="wordList-length">
-            <span>List length</span>
-          </div>
-          <div class="wordList-edit">
-            <span>Action</span>
-          </div>
-        </div>
-        <div v-for="(wordList, index) in wordLists" :key="index" class="wordList-item">
-          <div class="wordList-name">
-            <span>{{ wordList.name }}</span>
-          </div>
-          <div class="wordList-length">
-            <span>{{ wordList.words.length }}</span>
-          </div>
-          <div class="wordList-editLink">
-            <router-link :to="`/edit/${wordList.name}`">Edit</router-link>
-          </div>
-        </div>
-      </div>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-left">No.</th>
+              <th class="text-left">Time</th>
+              <th class="text-left">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(wordList, index) in wordLists" :key="index">
+              <td>{{ wordList.name }}</td>
+              <td>{{ wordList.words.length }}</td>
+              <td>
+                <router-link :to="`/edit/${wordList.name}`">Edit</router-link>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
     </div>
   </ti-sheet>
 </template>
@@ -33,8 +29,6 @@
 
 <style lang="scss" scoped>
 #edit {
-  padding: 48px 0;
-
   .wordList {
     display: flex;
     flex-wrap: wrap;
@@ -86,7 +80,7 @@
 
 <script>
 import TiSheet from '../components/atoms/TiSheet.vue'
-import ThePageTitle from '@/components/ThePageTitle.vue'
+import ThePageTitle from '@/components/atoms/ThePageTitle.vue'
 import { mapGetters } from 'vuex'
 
 export default {

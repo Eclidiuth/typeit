@@ -1,5 +1,5 @@
 <template>
-  <h1>
+  <h1 class="text-2xl m-0 mb-12 py-12">
     <slot />
   </h1>
 </template>
@@ -7,8 +7,6 @@
 <style lang="scss" scoped>
 h1 {
   font-weight: 300;
-  margin: 0;
-  margin-bottom: 48px;
 }
 </style>
 

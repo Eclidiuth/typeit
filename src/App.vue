@@ -7,9 +7,8 @@
 
 <script>
 import "tailwindcss/tailwind.css"
-import TheNav from '@/components/TheNav.vue'
+import TheNav from '@/components/molecules/TheNav.vue'
 import '@/scss/style.scss'
-
 export default {
   components: {
     TheNav

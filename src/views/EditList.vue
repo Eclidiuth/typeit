@@ -3,45 +3,41 @@
     <div class="w-11/12 mx-auto">
       <the-page-title>Edit list "{{ $route.params.id }}"</the-page-title>
       <template v-if="words">
-        <ul class="wordList">
-          <li class="wordList-header wordList-item">
-            <div class="wordList-item-word">
-              <span>Word</span>
-              </div>
-            <div class="wordList-item-wordLength">
-              <span>Length</span>
-              </div>
-            <div class="wordList-item-wordDelete">
-              <span>Action</span>
-              </div>
-          </li>
-          <li v-for="(word, index) in words" :key="index" class="wordList-item">
-            <div class="wordList-item-word">
-              <span>{{ word }}</span>
-            </div>
-            <div class="wordList-item-wordLength">
-              <span>{{ word.length }}</span>
-            </div>
-            <div class="wordList-item-wordDelete">
-              <span @click="deleteWord(index)">Delete</span>
-            </div>
-          </li>
-          <li class="wordList-addWord wordList-item">
-            <div class="wordList-item-wordInputForm">
-              <input v-model="addWordFormInput" type="text" placeholder="Input word here">
-            </div>
-            <div class="wordList-item-wordLength">
-              <span>{{ addWordFormInput.length }}</span>
-            </div>
-            <div class="wordList-item-addWord">
-              <span @click="addWord()">Add</span>
-            </div>
-          </li>
-        </ul>
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">Word</th>
+                <th class="text-left">Length</th>
+                <th class="text-left">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(word, index) in words" :key="index">
+                <td>{{ word }}</td>
+                <td>{{ word.length }}</td>
+                <td>
+                  <span @click="deleteWord(index)">Delete</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <v-text-field v-model="addWordFormInput" label="Input word here"></v-text-field>
+                </td>
+                <td>
+                  <span>{{ addWordFormInput.length }}</span>
+                </td>
+                <td>
+                  <v-btn @click="addWord()">Add</v-btn>
+                </td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
         <div class="my-3">
           <p v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</p>
-          <t-button @click.native="saveChanges()" class="mr-2">Save changes</t-button>
-          <t-button @click.native="backToEditPage()">Cancel</t-button>
+          <ti-button @click.native="saveChanges()" class="mr-2">Save changes</ti-button>
+          <ti-button @click.native="backToEditPage()">Cancel</ti-button>
         </div>
       </template>
       <template v-else>
@@ -52,71 +48,10 @@
   </ti-sheet>
 </template>
 
-
-<style lang="scss" scoped>
-#editList {
-  padding: 48px 0;
-
-  .wordList {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    .wordList-item {
-      display: flex;
-
-      &:nth-child(odd) {
-        background-color: $white-secondary;
-      }
-
-      .wordList-item-word span,
-      .wordList-item-wordLength span,
-      .wordList-item-wordDelete span,
-      .wordList-item-wordInputForm input,
-      .wordList-item-addWord span {
-        display: block;
-        padding: 16px;
-      }
-
-      .wordList-item-word,
-      .wordList-item-wordInputForm {
-        width: 70%;
-      }
-
-      .wordList-item-wordLength {
-        width: 20%;
-      }
-
-      .wordList-item-wordDelete,
-      .wordList-item-addWord {
-        width: 10%;
-
-        span {
-          &:hover {
-            text-decoration: underline;
-          } 
-        }
-      }
-
-      .wordList-item-wordInputForm {
-        input {
-          background: transparent;
-          box-sizing: border-box;
-          border: 0;
-          margin: 8px;
-          padding: 8px;
-          width: calc(100% - 16px);
-        }
-      }
-    }
-  }
-}
-</style>
-
 <script>
 import TiSheet from '../components/atoms/TiSheet.vue'
-import ThePageTitle from '@/components/ThePageTitle.vue'
-import TButton from '@/components/TButton.vue'
+import ThePageTitle from '@/components/atoms/ThePageTitle.vue'
+import TiButton from '@/components/atoms/TiButton.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -124,7 +59,7 @@ export default {
   components: {
     'ti-sheet': TiSheet,
     ThePageTitle,
-    TButton,
+    'ti-button': TiButton,
   },
   data(){
     return {
