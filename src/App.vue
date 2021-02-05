@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import "tailwindcss/tailwind.css"
 import TheNav from '@/components/TheNav.vue'
 import '@/scss/style.scss'
 
