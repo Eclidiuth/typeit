@@ -1,12 +1,12 @@
 <template>
   <li>
-    <span class="rankingList-recordNumber">
+    <span class="rankingList-recordNumber p-4 text-sm">
       {{ number }}
     </span>
-    <span class="rankingList-recordTime">
+    <span class="rankingList-recordTime p-4 text-sm">
       {{ time }} seconds
     </span>
-    <span class="rankingList-recordDate">
+    <span class="rankingList-recordDate p-4 text-sm">
       {{ recordDate }}
     </span>
   </li>
@@ -20,7 +20,6 @@ li {
   .rankingList-recordTime,
   .rankingList-recordDate {
     display: block;
-    padding: 16px;
   }
 
   .rankingList-recordNumber {

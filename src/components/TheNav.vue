@@ -1,6 +1,6 @@
 <template>
-  <nav class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-space-between">
+  <nav class="flex items-center">
+    <div class="flex items-center justify-between w-9/12 mx-auto">
       <h1>
         <router-link to="/">TypeIt</router-link>
       </h1>
@@ -20,12 +20,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-
 nav {
   background-color: $text-black-primary;
   height: 60px;
-  min-width: 640px;
+  min-width: 720px;
 
   h1 {
     font-size: $fsize-h6;

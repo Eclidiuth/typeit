@@ -1,8 +1,11 @@
 <template>
-  <the-content>
+  <ti-sheet>
     <div class="header">
       <template v-if="gameState === 'cleared'">
-        <the-game-clear-panel :time="getGameClearTime()" v-on:click.native="restartGame" />
+        <the-game-clear-panel
+          :time="getGameClearTime()"
+          v-on:click.native="restartGame"
+        />
       </template>
       <template v-else-if="gameState === 'playing' || gameState === 'standby'">
         <the-word-display :word="word" :charCheckCollections="checkWordAndInput" />
@@ -10,31 +13,29 @@
       </template>
     </div>
     <div class="main pb-3">
-      <div class="container-90">
-        <the-word-list-group :words="wordListWords" class="mt-3" />
-        <div class="d-flex justify-content-space-between">
-          <the-ranking-list-group :records="timeRecords" class="my-3" style="width:55%" /> 
-          <the-select-word-list-group :wordLists="wordLists" class="my-3" style="width:40%" />
-        </div>
+      <div class="w-11/12 mx-auto">
+        <the-word-list-group :words="wordListWords" />
+        <the-ranking-list-group :records="timeRecords" />
+        <the-select-word-list-group :wordLists="wordLists" />
       </div>
     </div>
-  </the-content>
+  </ti-sheet>
 </template>
 
 <script>
-import TheContent             from '@/components/TheContent'
+import TiSheetVue             from '@/components/atoms/TiSheet.vue'
 import TheGameClearPanel      from '@/components/TheGameClearPanel.vue'
 import TheWordDisplay         from '@/components/TheWordDisplay.vue'
 import TheWordInputField      from '@/components/TheWordInputField.vue'
-import TheWordListGroup       from '@/components/TheWordListGroup.vue'
-import TheRankingListGroup    from '@/components/TheRankingListGroup.vue'
-import TheSelectWordListGroup from '@/components/TheSelectWordListGroup.vue'
+import TheWordListGroup       from '@/components/molecules/TheWordListGroup.vue'
+import TheRankingListGroup    from '@/components/molecules/TheRankingListGroup.vue'
+import TheSelectWordListGroup from '@/components/molecules/TheSelectWordListGroup.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
-    TheContent,
+    'ti-sheet': TiSheetVue,
     TheGameClearPanel,
     TheWordDisplay,
     TheWordInputField,

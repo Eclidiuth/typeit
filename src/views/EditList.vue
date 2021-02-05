@@ -1,6 +1,6 @@
 <template>
-  <the-content id="editList">
-    <div class="container-90">
+  <ti-sheet id="editList">
+    <div class="w-11/12 mx-auto">
       <the-page-title>Edit list "{{ $route.params.id }}"</the-page-title>
       <template v-if="words">
         <ul class="wordList">
@@ -49,12 +49,10 @@
         <p>Word list "{{ $route.params.id }}" no found.</p>
       </template>
     </div>
-  </the-content>
+  </ti-sheet>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
+
 <style lang="scss" scoped>
 #editList {
   padding: 48px 0;
@@ -116,7 +114,7 @@
 </style>
 
 <script>
-import TheContent from '../components/TheContent.vue'
+import TiSheet from '../components/atoms/TiSheet.vue'
 import ThePageTitle from '@/components/ThePageTitle.vue'
 import TButton from '@/components/TButton.vue'
 import { mapGetters } from 'vuex'
@@ -124,7 +122,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'EditList',
   components: {
-    TheContent,
+    'ti-sheet': TiSheet,
     ThePageTitle,
     TButton,
   },

@@ -1,14 +1,11 @@
 <template>
   <div>
-    <p class="text-align-center">
+    <p class="text-center">
       <span v-for="(char, index) in word" :key="index" :class="hilightClassNames[index]">{{ char }}</span>
     </p>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
 <style lang="scss" scoped>
 
 div {

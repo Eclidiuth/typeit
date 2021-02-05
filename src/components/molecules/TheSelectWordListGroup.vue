@@ -1,6 +1,6 @@
 <template>
   <div class="the-select-word-list-group">
-    <h3>Play</h3>
+    <h3 class="py-4">Play</h3>
     <div class="wordList">
       <div class="wordList-item">
         <div class="wordList-listName">
@@ -41,10 +41,7 @@
   .wordList {
     .wordList-item {
       display: flex;
-  
-      &:nth-child(odd) {
-        background: $white-secondary;
-      }
+      border-bottom: solid 1px $white-secondary;
     }
   
     .wordList-listName {

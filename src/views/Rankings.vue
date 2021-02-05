@@ -1,6 +1,6 @@
 <template>
-  <the-content id="rankings">
-    <div class="container-90">
+  <ti-sheet id="rankings">
+    <div class="px-8">
       <the-page-title>Rankings</the-page-title>
       <div class="mb-3" v-for="(record, index) in records" :key="index">
         <h2>{{ record.name }}</h2>
@@ -18,12 +18,10 @@
         </table>
       </div>
     </div>
-  </the-content>
+  </ti-sheet>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
+
 <style lang="scss" scoped>
 #rankings {
   padding: 48px 0;
@@ -68,11 +66,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import ThePageTitle from '../components/ThePageTitle.vue'
-import TheContent from '../components/TheContent.vue'
+import TiSheet from '../components/atoms/TiSheet.vue'
 
 export default {
   components: {
-    TheContent,
+    'ti-sheet': TiSheet,
     ThePageTitle
   },
   name: 'Rankings',

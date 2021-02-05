@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h3>Rankings</h3>
+    <h3 class="pt-6 pb-4">Rankings</h3>
     <ul>
       <li class="rankingList-header rankingList-item">
-        <span class="rankingList-recordNumber">No.</span>
-        <span class="rankingList-recordTime">Time</span>
-        <span class="rankingList-recordDate">Date</span>
+        <span class="rankingList-recordNumber p-4 text-sm">No.</span>
+        <span class="rankingList-recordTime p-4 text-sm">Time</span>
+        <span class="rankingList-recordDate p-4 text-sm">Date</span>
       </li>
       <the-ranking-list-item v-for="(record, index) in records" :key="index" 
         :number="index + 1" :time="record.time" :date="record.date"
@@ -17,9 +17,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
+
 <style lang="scss" scoped>
 div {
   h3 {
@@ -34,32 +32,26 @@ div {
     padding: 0;
 
     .rankingList-header {
-        background-color: $white-secondary;
         display: flex;
-
-        .rankingList-recordNumber,
-        .rankingList-recordTime,
-        .rankingList-recordDate {
-          display: block;
-          font-size: $fsize-body-1;
-          padding: 16px;
-        }
-
-        .rankingList-recordNumber {
-          flex: 1 1 5%;
-          text-align: center;
-        }
-        .rankingList-recordTime {
-          flex: 1 1 55%;
-        }
-        .rankingList-recordDate {
-          flex: 1 1 40%;
-        }
     }
-
     .rankingList-item {
-      &:nth-child(odd) {
-        background-color: $white-secondary;
+      border-bottom: solid 1px $white-secondary;
+
+      .rankingList-recordNumber,
+      .rankingList-recordTime,
+      .rankingList-recordDate {
+        display: block;
+      }
+
+      .rankingList-recordNumber {
+        flex: 1 1 5%;
+        text-align: center;
+      }
+      .rankingList-recordTime {
+        flex: 1 1 55%;
+      }
+      .rankingList-recordDate {
+        flex: 1 1 40%;
       }
     }
   }

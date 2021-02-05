@@ -11,7 +11,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/scss/utilities.scss';
+
 </style>
 <style lang="scss" scoped>
 div {

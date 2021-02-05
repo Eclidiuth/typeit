@@ -1,6 +1,6 @@
 <template>
-  <the-content id="edit">
-    <div class="container-90">
+  <ti-sheet id="edit">
+    <div class="w-11/12 mx-auto">
       <the-page-title>Edit</the-page-title>
       <div class="wordList">
         <div class="wordList-item">
@@ -27,12 +27,10 @@
         </div>
       </div>
     </div>
-  </the-content>
+  </ti-sheet>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
+
 <style lang="scss" scoped>
 #edit {
   padding: 48px 0;
@@ -87,14 +85,14 @@
 </style>
 
 <script>
-import TheContent from '../components/TheContent.vue'
+import TiSheet from '../components/atoms/TiSheet.vue'
 import ThePageTitle from '@/components/ThePageTitle.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'Edit',
   components: {
-    TheContent,
+    'ti-sheet': TiSheet,
     ThePageTitle
   },
   computed: {

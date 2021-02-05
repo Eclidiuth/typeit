@@ -1,17 +1,14 @@
 <template>
   <div>
-    <h3>Words | JavaScript</h3>
+    <h3 class="pt-6 pb-4">Words | JavaScript</h3>
     <ul>
-      <the-word-list-item v-for="word in words" :key="word" class="mr-1 mb-1">
+      <the-word-list-item v-for="word in words" :key="word" class="mr-2 mb-2">
         {{ word }}
       </the-word-list-item>
     </ul>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import '@/scss/utilities.scss';
-</style>
 <style lang="scss" scoped>
 div {
   h3 {
