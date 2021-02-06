@@ -14,7 +14,7 @@
     </div>
     <div class="main pb-3">
       <div class="w-11/12 mx-auto">
-        <the-word-list-group :words="wordListWords" />
+        <the-word-list-group :words="wordListWords" :wordListName="wordListName" />
         <div class="xl:flex">
           <div class="xl:w-1/2">
             <the-ranking-list-group :records="timeRecords" class="md:w-11/12" />

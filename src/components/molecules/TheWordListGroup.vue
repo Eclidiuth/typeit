@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="pt-6 pb-4">Words | JavaScript</h3>
+    <h3 class="pt-6 pb-4">Words | {{ wordListName }}</h3>
     <v-chip-group>
       <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
     </v-chip-group>
@@ -29,6 +29,10 @@ export default {
   props: {
     words: {
       type: Array,
+      required: true
+    },
+    wordListName: {
+      type: String,
       required: true
     }
   }
