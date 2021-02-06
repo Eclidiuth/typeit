@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="pt-6 pb-4">Words | {{ wordListName }}</h3>
-    <v-chip-group>
+    <v-chip-group column>
       <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
     </v-chip-group>
   </div>
