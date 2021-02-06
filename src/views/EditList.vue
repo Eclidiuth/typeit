@@ -1,6 +1,6 @@
 <template>
   <ti-sheet id="editList">
-    <div class="w-11/12 mx-auto">
+    <div class="w-11/12 mx-auto py-4">
       <the-page-title>Edit list "{{ $route.params.id }}"</the-page-title>
       <template v-if="words">
         <v-simple-table>
@@ -17,7 +17,7 @@
                 <td>{{ word }}</td>
                 <td>{{ word.length }}</td>
                 <td>
-                  <span @click="deleteWord(index)">Delete</span>
+                  <v-btn @click="deleteWord(index)" text>Delete</v-btn>
                 </td>
               </tr>
               <tr>
@@ -28,7 +28,7 @@
                   <span>{{ addWordFormInput.length }}</span>
                 </td>
                 <td>
-                  <v-btn @click="addWord()">Add</v-btn>
+                  <v-btn @click="addWord()" text>Add</v-btn>
                 </td>
               </tr>
             </tbody>
@@ -36,8 +36,8 @@
         </v-simple-table>
         <div class="my-3">
           <p v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</p>
-          <ti-button @click.native="saveChanges()" class="mr-2">Save changes</ti-button>
-          <ti-button @click.native="backToEditPage()">Cancel</ti-button>
+          <v-btn @click.native="saveChanges()" class="mr-2">Save changes</v-btn>
+          <v-btn @click.native="backToEditPage()">Cancel</v-btn>
         </div>
       </template>
       <template v-else>
@@ -51,7 +51,6 @@
 <script>
 import TiSheet from '../components/atoms/TiSheet.vue'
 import ThePageTitle from '@/components/atoms/ThePageTitle.vue'
-import TiButton from '@/components/atoms/TiButton.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -59,7 +58,6 @@ export default {
   components: {
     'ti-sheet': TiSheet,
     ThePageTitle,
-    'ti-button': TiButton,
   },
   data(){
     return {

@@ -1,8 +1,8 @@
 <template>
   <ti-sheet id="rankings">
-    <div class="px-8">
+    <div class="w-11/12 mx-auto py-4">
       <the-page-title>Rankings</the-page-title>
-      <div v-for="(record, index) in records" :key="index">
+      <div v-for="(record, index) in records" :key="index" class="my-4">
         <h2>{{ record.name }}</h2>
         <v-simple-table>
           <template v-slot:default>

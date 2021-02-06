@@ -1,6 +1,6 @@
 <template>
   <ti-sheet id="edit">
-    <div class="w-11/12 mx-auto">
+    <div class="w-11/12 mx-auto py-4">
       <the-page-title>Edit</the-page-title>
       <v-simple-table>
         <template v-slot:default>
