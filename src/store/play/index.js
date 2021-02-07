@@ -2,9 +2,6 @@ export default {
   namespaced: true,
 
   state: () => ({
-    gameStartedAt: null,
-    gameClearedAt: null,
-
     wordListName: 'JavaScript config files',
     wordListIndex: 0,
     wordLists: [
@@ -46,9 +43,6 @@ export default {
     ]
   }),
   getters: {
-    gameStartedAt: state => state.gameStartedAt,
-    gameClearedAt: state => state.gameClearedAt,
-
     wordLists: state => state.wordLists,
     wordListName: state => state.wordListName,
     wordListIndex: state => state.wordListIndex,
@@ -65,9 +59,6 @@ export default {
     }
   },
   mutations: {
-    setGameStartedAt: (state, time)      => state.gameStartedAt = time,
-    setGameClearedAt: (state, time)      => state.gameClearedAt = time,
-    
     setWordListName : (state, wordListName) => state.wordListName = wordListName,
     setWordListIndex: (state, index)     => state.wordListIndex = index,
     setWordLists    : (state, wordLists) => state.wordLists = wordLists,
@@ -75,9 +66,6 @@ export default {
     setWordListWords: (state, payload) => state.wordLists[payload.index].words = payload.wordListWords
   },
   actions: {
-    updateGameStartedAt: ({ commit}, time)       => commit('setGameStartedAt', time),
-    updateGameClearedAt: ({ commit}, time)       => commit('setGameClearedAt', time),
-
     updateWordListName : ({ commit }, wordListName)  => commit('setWordListName', wordListName),
     updateWordListIndex: ({ commit }, index)         => commit('setWordListIndex', index),
     updateWordLists    :     ({ commit }, wordLists) => commit('setWordLists', wordLists),

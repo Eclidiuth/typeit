@@ -58,13 +58,13 @@ export default {
   data(){
     return {
       gameState: GAME_STATE.STAND_BY,
+      gameStartedAt: null,
+      gameClearedAt: null,
       inputFieldValue: ''
     }
   },
   computed: {
     ...mapGetters('play', [
-      'gameStartedAt',
-      'gameClearedAt',
       'word',
       'wordLists',
       'wordListWords',
@@ -110,7 +110,7 @@ export default {
       const gameState = this.gameState
 
       if(gameState === 'standby'){
-        this.$store.dispatch('play/updateGameStartedAt', new Date())
+        this.gameStartedAt = new Date()
         this.gameState = GAME_STATE.PLAYING
       }
 
@@ -120,10 +120,10 @@ export default {
         if(this.wordListWords[nextWordListIndex]){
           this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
         } else {
-          this.$store.dispatch('play/updateGameClearedAt', new Date())
+          this.gameClearedAt = new Date()
           this.gameState = GAME_STATE.CLEARED
 
-          const gameStartedAt = this.$store.getters['play/gameStartedAt']
+          const gameStartedAt = this.gameStartedAt
           const year    = gameStartedAt.getFullYear()
           const month   = ('0' + gameStartedAt.getMonth() + 1).slice(-2)
           const date    = ('0' + gameStartedAt.getDate()).slice(-2)
