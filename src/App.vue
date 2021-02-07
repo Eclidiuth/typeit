@@ -14,6 +14,11 @@ import '@/scss/style.scss'
 export default {
   components: {
     TheNav
+  },
+  mounted(){
+    if(localStorage.getItem('wordLists')){
+      this.$store.dispatch('updateWordLists', JSON.parse(localStorage.getItem('wordLists')))
+    }
   }
 }
 </script>

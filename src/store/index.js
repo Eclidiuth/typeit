@@ -95,9 +95,17 @@ export default new Vuex.Store({
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
       state.wordLists[wordListIndex].words = payload.wordListWords
     },
+    addTimeRecord: (state, payload) => {
+      const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
+      state.wordLists[wordListIndex].timeRecords.push(payload.timeRecord)
+    }
   },
   actions: {
     updateWordLists: ({ commit }, payload) => commit('setWordLists', payload),
     updateWordListWords: ({ commit }, payload) => commit('setWordListWords', payload),
+    addTimeRecord: ({ commit, state }, payload) => {
+      commit('addTimeRecord', payload)
+      localStorage.setItem('wordLists', JSON.stringify(state.wordLists))
+    }
   },
 })

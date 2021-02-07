@@ -136,20 +136,14 @@ export default {
           const hour    = ('0' + gameStartedAt.getHours()).slice(-2)
           const minute  = ('0' + gameStartedAt.getMinutes()).slice(-2)
           const seconds = ('0' + gameStartedAt.getSeconds()).slice(-2)
-          const gameClearedAt_str = `${year}/${month}/${date} ${hour}:${minute}:${seconds}`
 
-          const records = this.timeRecords ? this.timeRecords : []
-          records.push({
-            time: this.getGameClearTime(),
-            date: gameClearedAt_str
+          this.$store.dispatch('addTimeRecord', {
+            wordListName: this.wordListName,
+            timeRecord: {
+              time: this.getGameClearTime(),
+              date: `${year}/${month}/${date} ${hour}:${minute}:${seconds}`
+            }
           })
-
-          this.$store.dispatch('updateTimeRecord', {
-            recordName: this.wordListName,
-            newTimeRecords: records
-          })
-
-          localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['records']))
         }
 
         setTimeout(() => this.inputFieldValue = "")

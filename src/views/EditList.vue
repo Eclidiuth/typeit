@@ -17,7 +17,7 @@
                 <td>{{ word }}</td>
                 <td>{{ word.length }}</td>
                 <td>
-                  <v-btn @click="deleteWord(index)" text>Delete</v-btn>
+                  <v-btn @click="deleteWord(index)">Delete</v-btn>
                 </td>
               </tr>
               <tr>
@@ -28,7 +28,7 @@
                   <span>{{ addWordFormInput.length }}</span>
                 </td>
                 <td>
-                  <v-btn @click="addWord()" text>Add</v-btn>
+                  <v-btn @click="addWord()">Add</v-btn>
                 </td>
               </tr>
             </tbody>
@@ -94,11 +94,17 @@ export default {
           wordListWords: this.words
         })
   
-        localStorage.setItem('play/wordLists', JSON.stringify(this.wordLists))
+        localStorage.setItem('wordLists', JSON.stringify(this.wordLists))
       }
     },
     backToEditPage(){
       this.$router.push('/edit/')
+    }
+  },
+  mounted(){
+    const wordList = this.wordLists.filter(wordList => wordList.name === this.$route.params.id)
+    if(wordList){
+      this.words = wordList[0].words
     }
   }
 }
