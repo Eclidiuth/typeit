@@ -100,12 +100,6 @@ export default {
     backToEditPage(){
       this.$router.push('/edit/')
     }
-  },
-  mounted(){
-    if(localStorage.getItem('play/wordLists')){
-      this.$store.dispatch('updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
-    }
-    this.words = this.originalWords.slice()
   }
 }
 </script>

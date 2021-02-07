@@ -2,26 +2,28 @@
   <ti-sheet id="rankings">
     <div class="w-11/12 mx-auto py-4">
       <the-page-title>Rankings</the-page-title>
-      <div v-for="(record, index) in records" :key="index" class="my-4">
-        <h2>{{ record.name }}</h2>
-        <v-simple-table>
-          <template v-slot:default>
-            <thead>
-              <tr>
-                <th class="text-left">No.</th>
-                <th class="text-left">Time</th>
-                <th class="text-left">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(timeRecord, index) in record.timeRecords" :key="index">
-                <td>{{ index + 1 }}</td>
-                <td>{{ timeRecord.time }}</td>
-                <td>{{ timeRecord.date }}</td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
+      <div v-for="(wordList, index) in wordLists" :key="index" class="my-4">
+        <template v-if="wordList.timeRecords.length !== 0">
+          <h2>{{ wordList.name }}</h2>
+          <v-simple-table>
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">No.</th>
+                  <th class="text-left">Time</th>
+                  <th class="text-left">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(timeRecord, index) in wordList.timeRecords" :key="index">
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ timeRecord.time }} seconds</td>
+                  <td>{{ timeRecord.date }}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </template>
       </div>
     </div>
   </ti-sheet>
@@ -49,13 +51,7 @@ export default {
   },
   name: 'Rankings',
   computed: {
-    ...mapGetters('ranking', ['records'])
-  },
-  mounted(){
-    const records = localStorage.getItem('ranking/records')
-    if(records){
-      this.$store.dispatch('ranking/updateRecords', JSON.parse(records))
-    }
+    ...mapGetters(['wordLists']),
   }
 }
 </script>

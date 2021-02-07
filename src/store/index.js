@@ -1,6 +1,5 @@
 import Vue     from 'vue'
 import Vuex    from 'vuex'
-import Ranking from '@/store/ranking/index.js'
 
 Vue.use(Vuex)
 
@@ -9,11 +8,30 @@ export default new Vuex.Store({
     wordLists: [
       {
         name: 'テスト用データ1',
-        words: ['a', 'b', 'c']
+        words: ['a', 'b', 'c'],
+        timeRecords: []
       },
       {
         name: 'テスト用データ2',
-        words: ['ab', 'cd', 'ef']
+        words: ['ab', 'cd', 'ef'],
+        timeRecords: [
+          {
+            time: 10,
+            date: '2020/12/11 00:00:00'
+          },
+          {
+            time: 15,
+            date: '2020/12/11 00:00:30'
+          },
+          {
+            time: 25,
+            date: '2020/12/11 00:01:00'
+          },
+          {
+            time: 20,
+            date: '2020/12/11 00:01:00'
+          },
+        ]
       },
       {
         name: 'JavaScript config files',
@@ -25,6 +43,20 @@ export default new Vuex.Store({
           'babel.config.js',
           '.babelrc',
           '.eslintrc'
+        ],
+        timeRecords: [
+          {
+            time: 20.1,
+            date: '2020/12/16 00:00:00'
+          },
+          {
+            time: 22.2,
+            date: '2020/12/16 00:05:00'
+          },
+          {
+            time: 24.0,
+            date: '2020/12/16 00:10:00'
+          },
         ]
       },
       {
@@ -40,25 +72,32 @@ export default new Vuex.Store({
           "export const selectHoge = state => state.hoge.value",
           "const hoge = useSelector(selectHoge)",
           "const dispatch = useDispatch()"
+        ],
+        timeRecords: [
+          {
+            time: 135.1,
+            date: '2020/12/22 16:37:48'
+          }
         ]
       }
     ]
   },
   getters: {
-    wordLists: state => state.wordLists
+    wordLists: state => state.wordLists,
+    findRecordByName: state => wordListName => {
+      const wordList = state.wordLists.filter(wordList => wordList.name === wordListName)
+      return wordList && wordList[0].timeRecords
+    }
   },
   mutations: {
     setWordLists: (state, payload) => state.wordLists = payload,
     setWordListWords: (state, payload) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
       state.wordLists[wordListIndex].words = payload.wordListWords
-    }
+    },
   },
   actions: {
     updateWordLists: ({ commit }, payload) => commit('setWordLists', payload),
-    updateWordListWords: ({ commit }, payload) => commit('setWordListWords', payload)
+    updateWordListWords: ({ commit }, payload) => commit('setWordListWords', payload),
   },
-  modules: {
-    ranking: Ranking
-  }
 })

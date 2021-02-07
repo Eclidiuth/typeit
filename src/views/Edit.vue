@@ -91,11 +91,6 @@ export default {
   },
   computed: {
     ...mapGetters(['wordLists'])
-  },
-  mounted(){
-    if(localStorage.getItem('play/wordLists')){
-      this.$store.dispatch('updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
-    }
   }
 }
 </script>

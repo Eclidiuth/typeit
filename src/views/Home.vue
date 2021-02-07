@@ -68,8 +68,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['wordLists']),
-    ...mapGetters('ranking', ['findRecordByName']),
+    ...mapGetters(['wordLists', 'findRecordByName']),
 
     word(){
       return this.wordListWords[this.wordListIndex]
@@ -83,7 +82,7 @@ export default {
     },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
-      return record ? record.timeRecords.sort((a, b) => a.time > b.time ? 1 : -1) : null
+      return record ? record.sort((a, b) => a.time > b.time ? 1 : -1) : null
     },
     checkWordAndInput(){
       const word = this.word
@@ -145,22 +144,16 @@ export default {
             date: gameClearedAt_str
           })
 
-          this.$store.dispatch('ranking/updateTimeRecord', {
+          this.$store.dispatch('updateTimeRecord', {
             recordName: this.wordListName,
             newTimeRecords: records
           })
 
-          localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['ranking/records']))
+          localStorage.setItem('ranking/records', JSON.stringify(this.$store.getters['records']))
         }
 
         setTimeout(() => this.inputFieldValue = "")
       }
-    }
-  },
-  mounted(){
-    const records = localStorage.getItem('ranking/records')
-    if(records){
-      this.$store.dispatch('ranking/updateRecords', JSON.parse(records))
     }
   }
 }
