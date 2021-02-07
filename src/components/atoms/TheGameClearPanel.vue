@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="time text-align-center">Cleared! Time: {{ time }} seconds</div>
-    <div class="playAgain d-flex justify-content-center">
+    <div class="time text-center">Cleared! Time: {{ time }} seconds</div>
+    <div class="playAgain d-flex justify-center">
       <p>
         <font-awesome-icon icon="undo" />
         Play again

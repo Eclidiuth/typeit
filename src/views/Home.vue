@@ -30,9 +30,9 @@
 
 <script>
 import TiSheetVue             from '@/components/atoms/TiSheet.vue'
-import TheGameClearPanel      from '@/components/TheGameClearPanel.vue'
-import TheWordDisplay         from '@/components/TheWordDisplay.vue'
-import TheWordInputField      from '@/components/TheWordInputField.vue'
+import TheGameClearPanel      from '@/components/atoms/TheGameClearPanel.vue'
+import TheWordDisplay         from '@/components/atoms/TheWordDisplay.vue'
+import TheWordInputField      from '@/components/atoms/TheWordInputField.vue'
 import TheWordListGroup       from '@/components/molecules/TheWordListGroup.vue'
 import TheRankingListGroup    from '@/components/molecules/TheRankingListGroup.vue'
 import TheSelectWordListGroup from '@/components/molecules/TheSelectWordListGroup.vue'

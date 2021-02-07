@@ -11,8 +11,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/_variables.scss';
+
 .ti-sheet {
-  min-width: 720px;
-  max-width: 1280px;
+  min-width: $content-min-width;
+  max-width: $content-max-width;
 }
 </style>

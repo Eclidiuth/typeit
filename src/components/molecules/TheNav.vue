@@ -1,6 +1,6 @@
 <template>
   <nav class="flex items-center">
-    <div class="flex items-center justify-between w-9/12 mx-auto">
+    <div class="nav-container flex items-center justify-between w-9/12 mx-auto">
       <h1>
         <router-link to="/">TypeIt</router-link>
       </h1>
@@ -20,42 +20,49 @@
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/_variables.scss';
+
 nav {
   background-color: $text-black-primary;
   height: 60px;
-  min-width: 720px;
+  min-width: $content-min-width;
 
-  h1 {
-    font-size: $fsize-h6;
-    font-weight: $fweight-h1;
-    margin: 0;
+  .nav-container {
+    max-width: $content-max-width;
 
-    a {
-      color: $text-white-primary;
-      text-decoration: none;
-    }
-  }
-  ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      display: block;
-
-      &.active {
-        a {
-          color: $text-white-primary;
-        }
-      }
-
+    h1 {
+      font-size: $fsize-h6;
+      font-weight: $fweight-h1;
+      margin: 0;
+  
       a {
-        color: $text-white-secondary;
-        display: block;
-        font-size: $fsize-body-2;
+        color: $text-white-primary;
         text-decoration: none;
-        padding: 16px;
+      }
+    }
+
+    ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: block;
+
+        &.active {
+          a {
+            color: $text-white-primary;
+          }
+        }
+
+        a {
+          color: $text-white-secondary;
+          display: block;
+          font-size: $fsize-body-2;
+          text-decoration: none;
+          padding: 16px;
+        }
       }
     }
   }

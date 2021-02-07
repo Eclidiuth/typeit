@@ -18,11 +18,11 @@ div {
     font-weight: $fweight-h3;
     margin: 0;
 
-    .green {
+    .word--correct {
       color: green;
     }
 
-    .red {
+    .word--incorrect {
       color: red;
     }
   }
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     hilightClassNames(){
-      return this.charCheckCollections.map(el => el ? 'green' : 'red')
+      return this.charCheckCollections.map(el => el ? 'word--correct' : 'word--incorrect')
     }
   }
 }
