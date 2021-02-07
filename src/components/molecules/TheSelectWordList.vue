@@ -38,18 +38,17 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'TheSelectWordListGroup',
   props: {
     wordLists: {
       type: Array,
       required: true
+    },
+    wordListName: {
+      prop: String,
+      required: true
     }
-  },
-  computed: {
-    ...mapGetters('play', ['wordListName'])
   },
   methods: {
     selectWordList(wordListName){

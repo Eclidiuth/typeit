@@ -66,10 +66,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('play', ['wordLists', 'findWordListByName']),
+    ...mapGetters(['wordLists']),
 
     originalWords(){
-      const wordList = this.findWordListByName(this.$route.params.id)
+      const wordList = this.wordLists.filter(wordList => wordList.name === this.$route.params.id)[0]
       return wordList ? wordList.words : null
     },
     isWordListWordsEmpty(){
@@ -89,7 +89,7 @@ export default {
     saveChanges(){
       if(!this.isWordListWordsEmpty){
         const wordListName = this.$route.params.id
-        this.$store.dispatch('play/updateWordListWords', {
+        this.$store.dispatch('updateWordListWords', {
           wordListName: wordListName,
           wordListWords: this.words
         })
@@ -103,7 +103,7 @@ export default {
   },
   mounted(){
     if(localStorage.getItem('play/wordLists')){
-      this.$store.dispatch('play/updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
+      this.$store.dispatch('updateWordLists', JSON.parse(localStorage.getItem('play/wordLists')))
     }
     this.words = this.originalWords.slice()
   }

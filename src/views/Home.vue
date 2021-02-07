@@ -20,7 +20,9 @@
             <the-ranking-list :records="timeRecords" class="md:w-11/12" />
           </div>
           <div class="xl:w-1/2">
-            <the-select-word-list @wordListSelect="handleWordListSelect" :wordLists="wordLists" class="md:w-11/12" />
+            <the-select-word-list @wordListSelect="handleWordListSelect"
+              :wordLists="wordLists" :wordListName="wordListName" class="md:w-11/12"
+            />
           </div>
         </div>
       </div>
@@ -66,11 +68,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('play', [
-      'wordLists',
-      'wordListWords',
-    ]),
-
+    ...mapGetters(['wordLists']),
     ...mapGetters('ranking', ['findRecordByName']),
 
     word(){
