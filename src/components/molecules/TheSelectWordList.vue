@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th class="text-left">Name</th>
-            <th class="text-left">Length</th>
+            <th class="text-left">List Length</th>
             <th class="text-left">Action</th>
           </tr>
         </thead>
@@ -16,9 +16,9 @@
             <td>{{ wordList.name }}</td>
             <td>{{ wordList.words.length }}</td>
             <td>
-              <span @click="selectWordList(wordList.name)">
+              <a @click="selectWordList(wordList.name)">
                 {{ wordList.name === wordListName ? 'Selected' : 'Play' }}
-              </span>
+              </a>
             </td>
           </tr>
         </tbody>

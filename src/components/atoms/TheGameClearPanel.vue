@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="time text-center">Cleared! Time: {{ time }} seconds</div>
+    <div class="time text-center">Clear time: {{ time }} seconds</div>
     <div class="playAgain d-flex justify-center">
       <p>
         <font-awesome-icon icon="undo" />

@@ -17,7 +17,7 @@
           <tbody>
             <tr v-for="(record, index) in records" :key="index">
               <td>{{ index + 1 }}</td>
-              <td>{{ record.time }}</td>
+              <td>{{ record.time }} seconds</td>
               <td>{{ record.date }}</td>
             </tr>
           </tbody>
