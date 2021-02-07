@@ -61,6 +61,7 @@ export default {
       gameStartedAt: null,
       gameClearedAt: null,
       wordListIndex: 0,
+      wordListName: 'JavaScript config files',
       inputFieldValue: ''
     }
   },
@@ -68,13 +69,19 @@ export default {
     ...mapGetters('play', [
       'wordLists',
       'wordListWords',
-      'wordListName',
     ]),
 
     ...mapGetters('ranking', ['findRecordByName']),
 
     word(){
       return this.wordListWords[this.wordListIndex]
+    },
+    wordList(){
+      const wordList = this.wordLists.filter(list => list.name === this.wordListName)
+      return wordList ? wordList[0] : null
+    },
+    wordListWords(){
+      return this.wordList.words
     },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
@@ -103,7 +110,7 @@ export default {
     },
     handleWordListSelect(wordListName){
       this.gameState = GAME_STATE.STAND_BY
-      this.$store.dispatch('play/updateWordListName', wordListName)
+      this.wordListName = wordListName
       this.wordListIndex = 0
     }
   },
@@ -141,7 +148,7 @@ export default {
           })
 
           this.$store.dispatch('ranking/updateTimeRecord', {
-            recordName: this.$store.getters['play/wordListName'],
+            recordName: this.wordListName,
             newTimeRecords: records
           })
 
