@@ -53,9 +53,7 @@ export default {
   },
   methods: {
     selectWordList(wordListName){
-      this.$store.dispatch('play/updateWordListName', wordListName)
-      this.$store.dispatch('play/updateWordListIndex', 0)
-      this.$store.dispatch('play/updateGameState', 'standby')
+      this.$emit('wordListSelect', wordListName)
     }
   }
 }

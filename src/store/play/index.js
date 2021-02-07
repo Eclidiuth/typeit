@@ -1,14 +1,7 @@
-const GAME_STATE = {
-  STAND_BY: 'standby',
-  PLAYING: 'playing',
-  CLEARED: 'cleared'
-}
-
 export default {
   namespaced: true,
 
   state: () => ({
-    gameState: GAME_STATE.STAND_BY,
     gameStartedAt: null,
     gameClearedAt: null,
 
@@ -53,7 +46,6 @@ export default {
     ]
   }),
   getters: {
-    gameState: state => state.gameState,
     gameStartedAt: state => state.gameStartedAt,
     gameClearedAt: state => state.gameClearedAt,
 
@@ -73,7 +65,6 @@ export default {
     }
   },
   mutations: {
-    setGameState    : (state, gameState) => state.gameState = gameState,
     setGameStartedAt: (state, time)      => state.gameStartedAt = time,
     setGameClearedAt: (state, time)      => state.gameClearedAt = time,
     
@@ -84,7 +75,6 @@ export default {
     setWordListWords: (state, payload) => state.wordLists[payload.index].words = payload.wordListWords
   },
   actions: {
-    updateGameState    : ({ commit }, gameState) => commit('setGameState', gameState),
     updateGameStartedAt: ({ commit}, time)       => commit('setGameStartedAt', time),
     updateGameClearedAt: ({ commit}, time)       => commit('setGameClearedAt', time),
 

@@ -20,7 +20,7 @@
             <the-ranking-list :records="timeRecords" class="md:w-11/12" />
           </div>
           <div class="xl:w-1/2">
-            <the-select-word-list :wordLists="wordLists" class="md:w-11/12" />
+            <the-select-word-list @wordListSelect="handleWordListSelect" :wordLists="wordLists" class="md:w-11/12" />
           </div>
         </div>
       </div>
@@ -38,6 +38,12 @@ import TheRankingList    from '@/components/molecules/TheRankingList.vue'
 import TheSelectWordList from '@/components/molecules/TheSelectWordList.vue'
 import { mapGetters } from 'vuex'
 
+const GAME_STATE = {
+  STAND_BY: 'standby',
+  PLAYING: 'playing',
+  CLEARED: 'cleared'
+}
+
 export default {
   name: 'Home',
   components: {
@@ -51,12 +57,12 @@ export default {
   },
   data(){
     return {
+      gameState: GAME_STATE.STAND_BY,
       inputFieldValue: ''
     }
   },
   computed: {
     ...mapGetters('play', [
-      'gameState',
       'gameStartedAt',
       'gameClearedAt',
       'word',
@@ -84,7 +90,7 @@ export default {
   methods: {
     restartGame(){
       this.$store.dispatch('play/resetWordListIndex')
-      this.$store.dispatch('play/updateGameState', 'standby')
+      this.gameState = GAME_STATE.STAND_BY
     },
     getGameClearTime(){
       const gameStartedAt = this.gameStartedAt
@@ -92,6 +98,11 @@ export default {
       const ms = gameClearedAt.getTime() - gameStartedAt.getTime()
 
       return Number((ms / 1000).toFixed(1))
+    },
+    handleWordListSelect(wordListName){
+      this.gameState = GAME_STATE.STAND_BY
+      this.$store.dispatch('play/updateWordListName', wordListName)
+      this.$store.dispatch('play/updateWordListIndex', 0)
     }
   },
   watch: {
@@ -100,7 +111,7 @@ export default {
 
       if(gameState === 'standby'){
         this.$store.dispatch('play/updateGameStartedAt', new Date())
-        this.$store.dispatch('play/updateGameState', 'playing')
+        this.gameState = GAME_STATE.PLAYING
       }
 
       if(this.word === this.inputFieldValue){
@@ -110,7 +121,7 @@ export default {
           this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
         } else {
           this.$store.dispatch('play/updateGameClearedAt', new Date())
-          this.$store.dispatch('play/updateGameState', 'cleared')
+          this.gameState = GAME_STATE.CLEARED
 
           const gameStartedAt = this.$store.getters['play/gameStartedAt']
           const year    = gameStartedAt.getFullYear()
