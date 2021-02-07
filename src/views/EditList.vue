@@ -17,7 +17,7 @@
                 <td>{{ word }}</td>
                 <td>{{ word.length }}</td>
                 <td>
-                  <v-btn @click="deleteWord(index)">Delete</v-btn>
+                  <v-btn text @click="deleteWord(index)">Delete</v-btn>
                 </td>
               </tr>
               <tr>
@@ -28,16 +28,16 @@
                   <span>{{ addWordFormInput.length }}</span>
                 </td>
                 <td>
-                  <v-btn @click="addWord()">Add</v-btn>
+                  <v-btn text @click="addWord()">Add</v-btn>
                 </td>
               </tr>
             </tbody>
           </template>
         </v-simple-table>
         <div class="my-3">
-          <p v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</p>
-          <v-btn @click.native="saveChanges()" class="mr-2">Save changes</v-btn>
-          <v-btn @click.native="backToEditPage()">Cancel</v-btn>
+          <v-alert color="pink" dark type="error" v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</v-alert>
+          <v-btn :disabled="isWordListWordsEmpty" @click="saveChanges()" class="mr-2">Save changes</v-btn>
+          <v-btn :disabled="isWordListWordsEmpty" @click="backToEditPage()">Cancel</v-btn>
         </div>
       </template>
       <template v-else>

@@ -16,7 +16,9 @@
               <td>{{ wordList.name }}</td>
               <td>{{ wordList.words.length }}</td>
               <td>
-                <router-link :to="`/edit/${wordList.name}`">Edit</router-link>
+                <router-link :to="`/edit/${wordList.name}`">
+                  <v-btn text>edit</v-btn>
+                </router-link>
               </td>
             </tr>
           </tbody>

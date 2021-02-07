@@ -16,9 +16,9 @@
             <td>{{ wordList.name }}</td>
             <td>{{ wordList.words.length }}</td>
             <td>
-              <a @click="selectWordList(wordList.name)">
+              <v-btn text @click="selectWordList(wordList.name)">
                 {{ wordList.name === wordListName ? 'Selected' : 'Play' }}
-              </a>
+              </v-btn>
             </td>
           </tr>
         </tbody>
