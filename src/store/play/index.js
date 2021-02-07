@@ -3,7 +3,6 @@ export default {
 
   state: () => ({
     wordListName: 'JavaScript config files',
-    wordListIndex: 0,
     wordLists: [
       {
         name: 'テスト用データ1',
@@ -45,13 +44,11 @@ export default {
   getters: {
     wordLists: state => state.wordLists,
     wordListName: state => state.wordListName,
-    wordListIndex: state => state.wordListIndex,
     wordList: (state, getters) => {
       const wordList = getters.wordLists.filter(list => list.name === getters.wordListName)
       return wordList ? wordList[0] : null
     },
     wordListWords: (state, getters) => getters.wordList.words,
-    word: (state, getters) => getters.wordListWords[getters.wordListIndex],
 
     findWordListByName: (state, getters) => wordListName => {
       const wordList = getters.wordLists.filter(list => list.name === wordListName)
@@ -60,16 +57,13 @@ export default {
   },
   mutations: {
     setWordListName : (state, wordListName) => state.wordListName = wordListName,
-    setWordListIndex: (state, index)     => state.wordListIndex = index,
     setWordLists    : (state, wordLists) => state.wordLists = wordLists,
 
     setWordListWords: (state, payload) => state.wordLists[payload.index].words = payload.wordListWords
   },
   actions: {
     updateWordListName : ({ commit }, wordListName)  => commit('setWordListName', wordListName),
-    updateWordListIndex: ({ commit }, index)         => commit('setWordListIndex', index),
     updateWordLists    :     ({ commit }, wordLists) => commit('setWordLists', wordLists),
-    resetWordListIndex : ({ commit })                => commit('setWordListIndex', 0),
 
     updateWordListWords: ({ commit, getters}, payload) => {
       const wordListIndex = getters.wordLists.findIndex(wordList => wordList.name === payload.wordListName)

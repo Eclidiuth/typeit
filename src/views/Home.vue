@@ -60,20 +60,22 @@ export default {
       gameState: GAME_STATE.STAND_BY,
       gameStartedAt: null,
       gameClearedAt: null,
+      wordListIndex: 0,
       inputFieldValue: ''
     }
   },
   computed: {
     ...mapGetters('play', [
-      'word',
       'wordLists',
       'wordListWords',
       'wordListName',
-      'wordListIndex'
     ]),
 
     ...mapGetters('ranking', ['findRecordByName']),
 
+    word(){
+      return this.wordListWords[this.wordListIndex]
+    },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
       return record ? record.timeRecords.sort((a, b) => a.time > b.time ? 1 : -1) : null
@@ -89,7 +91,7 @@ export default {
   },
   methods: {
     restartGame(){
-      this.$store.dispatch('play/resetWordListIndex')
+      this.wordListIndex = 0
       this.gameState = GAME_STATE.STAND_BY
     },
     getGameClearTime(){
@@ -102,7 +104,7 @@ export default {
     handleWordListSelect(wordListName){
       this.gameState = GAME_STATE.STAND_BY
       this.$store.dispatch('play/updateWordListName', wordListName)
-      this.$store.dispatch('play/updateWordListIndex', 0)
+      this.wordListIndex = 0
     }
   },
   watch: {
@@ -118,7 +120,7 @@ export default {
         const nextWordListIndex = this.wordListIndex + 1
 
         if(this.wordListWords[nextWordListIndex]){
-          this.$store.dispatch('play/updateWordListIndex', nextWordListIndex)
+          this.wordListIndex = nextWordListIndex
         } else {
           this.gameClearedAt = new Date()
           this.gameState = GAME_STATE.CLEARED
