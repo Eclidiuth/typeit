@@ -35,7 +35,7 @@
           </template>
         </v-simple-table>
         <div class="my-3">
-          <v-alert color="pink" dark type="error" v-if="isWordListWordsEmpty">Error! You shoud add 1 word at least.</v-alert>
+          <v-alert color="pink" dark type="error" v-if="isWordListWordsEmpty">Error! You shoud have a word at least.</v-alert>
           <v-btn :disabled="isWordListWordsEmpty" @click="saveChanges()" class="mr-2">Save changes</v-btn>
           <v-btn :disabled="isWordListWordsEmpty" @click="backToEditPage()">Cancel</v-btn>
         </div>
