@@ -14,13 +14,13 @@
     </div>
     <div class="main pb-3">
       <div class="w-11/12 mx-auto">
-        <the-word-list-group :words="wordListWords" :wordListName="wordListName" />
+        <the-word-list :words="wordListWords" :wordListName="wordListName" />
         <div class="xl:flex">
           <div class="xl:w-1/2">
-            <the-ranking-list-group :records="timeRecords" class="md:w-11/12" />
+            <the-ranking-list :records="timeRecords" class="md:w-11/12" />
           </div>
           <div class="xl:w-1/2">
-            <the-select-word-list-group :wordLists="wordLists" class="md:w-11/12" />
+            <the-select-word-list :wordLists="wordLists" class="md:w-11/12" />
           </div>
         </div>
       </div>
@@ -33,9 +33,9 @@ import TiSheetVue             from '@/components/atoms/TiSheet.vue'
 import TheGameClearPanel      from '@/components/atoms/TheGameClearPanel.vue'
 import TheWordDisplay         from '@/components/atoms/TheWordDisplay.vue'
 import TheWordInputField      from '@/components/atoms/TheWordInputField.vue'
-import TheWordListGroup       from '@/components/molecules/TheWordListGroup.vue'
-import TheRankingListGroup    from '@/components/molecules/TheRankingListGroup.vue'
-import TheSelectWordListGroup from '@/components/molecules/TheSelectWordListGroup.vue'
+import TheWordList       from '@/components/molecules/TheWordList.vue'
+import TheRankingList    from '@/components/molecules/TheRankingList.vue'
+import TheSelectWordList from '@/components/molecules/TheSelectWordList.vue'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -45,9 +45,9 @@ export default {
     TheGameClearPanel,
     TheWordDisplay,
     TheWordInputField,
-    TheWordListGroup,
-    TheRankingListGroup,
-    TheSelectWordListGroup
+    TheWordList,
+    TheRankingList,
+    TheSelectWordList,
   },
   data(){
     return {
