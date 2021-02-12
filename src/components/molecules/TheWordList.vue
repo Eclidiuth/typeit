@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h3 class="pt-6 pb-4">Words | {{ wordListName }}</h3>
-    <v-chip-group column>
-      <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
-    </v-chip-group>
+    <v-expansion-panels accordion flat multiple v-model="panel">
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          <h3 class="pt-6 pb-4">Words | {{ wordListName }}</h3>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <v-chip-group column>
+            <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
+          </v-chip-group>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
 
@@ -35,6 +43,9 @@ export default {
       type: String,
       required: true
     }
-  }
+  },
+  data: () => ({
+    panel: [0]
+  })
 }
 </script>
