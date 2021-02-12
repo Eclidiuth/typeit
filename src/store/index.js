@@ -102,6 +102,12 @@ export default new Vuex.Store({
         timeRecords: []
       })
     },
+    deleteWordList: (state, wordListName) => {
+      const index = state.wordLists.findIndex(wordList => wordList.name === wordListName)
+      if(index != -1){
+        state.wordLists.splice(index, 1)
+      }
+    },
     addTimeRecord: (state, payload) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
       state.wordLists[wordListIndex].timeRecords.push(payload.timeRecord)
@@ -110,7 +116,8 @@ export default new Vuex.Store({
   actions: {
     updateWordLists: ({ commit }, payload) => commit('setWordLists', payload),
     updateWordListWords: ({ commit }, payload) => commit('setWordListWords', payload),
-    addWordList: ({ commit }, wordList) => commit('addWordList', wordList),
+    addWordList: ({ commit }, wordListName) => commit('addWordList', wordListName),
+    deleteWordList: ({ commit }, wordListName) => commit('deleteWordList', wordListName),
     addTimeRecord: ({ commit, state }, payload) => {
       commit('addTimeRecord', payload)
       localStorage.setItem('wordLists', JSON.stringify(state.wordLists))

@@ -28,7 +28,7 @@
                 <v-btn
                   color="green darken-1"
                   text
-                  @click="wordListDeleteDialog = false"
+                  @click="handleClickDeleteWordListButton()"
                 >
                   Agree
                 </v-btn>
@@ -85,7 +85,7 @@
 <script>
 import TiSheet from '../components/atoms/TiSheet.vue'
 import ThePageTitle from '@/components/atoms/ThePageTitle.vue'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'EditList',
@@ -112,6 +112,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['deleteWordList']),
+
     deleteWord(index){
       this.words.splice(index, 1)
     },
@@ -133,6 +135,12 @@ export default {
       }
     },
     backToEditPage(){
+      this.$router.push('/edit/')
+    },
+    handleClickDeleteWordListButton(){
+      this.wordListDeleteDialog = false
+      this.deleteWordList(this.$route.params.id)
+      localStorage.setItem('wordLists', JSON.stringify(this.wordLists))
       this.$router.push('/edit/')
     }
   },
