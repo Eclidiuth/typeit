@@ -16,9 +16,14 @@
             <td>{{ wordList.name }}</td>
             <td>{{ wordList.words.length }}</td>
             <td>
-              <v-btn text @click="selectWordList(wordList.name)">
+              <v-btn
+                v-if="wordList.name !== wordListName"
+                @click="selectWordList(wordList.name)"
+                outlined
+              >
                 {{ wordList.name === wordListName ? 'Selected' : 'Play' }}
               </v-btn>
+              <span v-else>SELECTED</span>
             </td>
           </tr>
         </tbody>
