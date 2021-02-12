@@ -3,7 +3,7 @@
     <v-expansion-panels accordion flat multiple v-model="panel">
       <v-expansion-panel>
         <v-expansion-panel-header>
-          <h3 class="py-4">Play</h3>
+          <h3>Play</h3>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-simple-table>

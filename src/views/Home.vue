@@ -12,7 +12,7 @@
         <the-word-input-field v-model="inputFieldValue" />
       </template>
     </div>
-    <div class="main pb-3">
+    <div class="main mt-4 pb-3">
       <div class="w-11/12 mx-auto">
         <the-word-list :words="wordList.words" :wordListName="wordListName" />
         <div class="xl:flex">

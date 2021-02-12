@@ -3,7 +3,7 @@
     <v-expansion-panels accordion flat multiple v-model="panel">
       <v-expansion-panel>
         <v-expansion-panel-header>
-          <h3 class="pt-6 pb-4">Rankings</h3>
+          <h3>Rankings</h3>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <template v-if="!records || records.length === 0">
