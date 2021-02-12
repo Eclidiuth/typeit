@@ -14,7 +14,7 @@
     </div>
     <div class="main pb-3">
       <div class="w-11/12 mx-auto">
-        <the-word-list :words="wordListWords" :wordListName="wordListName" />
+        <the-word-list :words="wordList.words" :wordListName="wordListName" />
         <div class="xl:flex">
           <div class="xl:w-1/2">
             <the-ranking-list :records="timeRecords" class="md:w-11/12" />
@@ -70,52 +70,39 @@ export default {
   computed: {
     ...mapGetters(['wordLists', 'findRecordByName']),
 
-    word(){
-      return this.wordListWords[this.wordListIndex]
-    },
+    word(){ return this.wordList.words[this.wordListIndex] },
     wordList(){
       const wordList = this.wordLists.filter(list => list.name === this.wordListName)
       return wordList ? wordList[0] : null
-    },
-    wordListWords(){
-      return this.wordList.words
     },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
       return record ? record.sort((a, b) => a.time > b.time ? 1 : -1) : null
     },
     checkWordAndInput(){
-      const word = this.word
-      const input = this.inputFieldValue
-
-      return (input.length >= word.length)
-        ? word.split("").map((char, index) => char === input[index])
-        : input.split("").map((char, index) => char === word[index])
+      return (this.inputFieldValue.length >= this.word.length)
+        ? this.word.split("").map((char, index) => char === this.inputFieldValue[index])
+        : this.inputFieldValue.split("").map((char, index) => char === this.word[index])
     },
   },
   methods: {
     restartGame(){
-      this.wordListIndex = 0
       this.gameState = GAME_STATE.STAND_BY
+      this.inputFieldValue = ""
+      this.wordListIndex = 0
     },
     getGameClearTime(){
-      const gameStartedAt = this.gameStartedAt
-      const gameClearedAt = this.gameClearedAt
-      const ms = gameClearedAt.getTime() - gameStartedAt.getTime()
-
+      const ms = this.gameClearedAt.getTime() - this.gameStartedAt.getTime()
       return Number((ms / 1000).toFixed(1))
     },
     handleWordListSelect(wordListName){
-      this.gameState = GAME_STATE.STAND_BY
       this.wordListName = wordListName
-      this.wordListIndex = 0
+      this.restartGame()
     }
   },
   watch: {
     inputFieldValue(){
-      const gameState = this.gameState
-
-      if(gameState === 'standby'){
+      if(this.gameState === GAME_STATE.STAND_BY){
         this.gameStartedAt = new Date()
         this.gameState = GAME_STATE.PLAYING
       }
@@ -123,7 +110,7 @@ export default {
       if(this.word === this.inputFieldValue){
         const nextWordListIndex = this.wordListIndex + 1
 
-        if(this.wordListWords[nextWordListIndex]){
+        if(this.wordList.words[nextWordListIndex]){
           this.wordListIndex = nextWordListIndex
         } else {
           this.gameClearedAt = new Date()
