@@ -51,7 +51,7 @@
                 <td>{{ word }}</td>
                 <td>{{ word.length }}</td>
                 <td>
-                  <v-btn text @click="deleteWord(index)">Delete</v-btn>
+                  <v-btn outlined @click="deleteWord(index)">Delete</v-btn>
                 </td>
               </tr>
               <tr>
@@ -62,7 +62,7 @@
                   <span>{{ addWordFormInput.length }}</span>
                 </td>
                 <td>
-                  <v-btn text @click="addWord()">Add</v-btn>
+                  <v-btn outlined @click="addWord()">Add</v-btn>
                 </td>
               </tr>
             </tbody>

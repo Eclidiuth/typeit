@@ -16,20 +16,8 @@ export default new Vuex.Store({
         words: ['ab', 'cd', 'ef'],
         timeRecords: [
           {
-            time: 10,
+            time: 10.0,
             date: '2020/12/11 00:00:00'
-          },
-          {
-            time: 15,
-            date: '2020/12/11 00:00:30'
-          },
-          {
-            time: 25,
-            date: '2020/12/11 00:01:00'
-          },
-          {
-            time: 20,
-            date: '2020/12/11 00:01:00'
           },
         ]
       },
