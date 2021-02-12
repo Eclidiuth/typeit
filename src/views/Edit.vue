@@ -93,6 +93,6 @@ export default {
   },
   computed: {
     ...mapGetters(['wordLists'])
-  }
+  },
 }
 </script>

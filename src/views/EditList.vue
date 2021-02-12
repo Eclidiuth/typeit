@@ -1,7 +1,41 @@
 <template>
   <ti-sheet id="editList">
     <div class="w-11/12 mx-auto py-4">
-      <the-page-title>Edit list "{{ $route.params.id }}"</the-page-title>
+      <the-page-title class="flex justify-between">
+        Edit list "{{ $route.params.id }}"
+          <v-dialog v-model="wordListDeleteDialog" persistent max-width="550">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="error" dark outlined v-bind="attrs" v-on="on">
+                Delete
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title class="headline">
+                Delete word list "{{ this.$route.params.id }}"?
+              </v-card-title>
+              <v-card-text>
+                This operation deletes the word list "hoge" and its time record and cannot be undone.
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click="wordListDeleteDialog = false"
+                >
+                  Disagree
+                </v-btn>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click="wordListDeleteDialog = false"
+                >
+                  Agree
+                </v-btn>
+              </v-card-actions>
+          </v-card>
+        </v-dialog>  
+      </the-page-title>
       <template v-if="words">
         <v-simple-table>
           <template v-slot:default>
@@ -63,6 +97,7 @@ export default {
     return {
       addWordFormInput: "",
       words: null,
+      wordListDeleteDialog: false,
     }
   },
   computed: {
