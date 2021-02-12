@@ -2,7 +2,7 @@
   <ti-sheet id="editList">
     <div class="w-11/12 mx-auto py-4">
       <the-page-title class="flex justify-between">
-        Edit list "{{ $route.params.id }}"
+        Edit the word list "{{ $route.params.id }}"
           <v-dialog v-model="wordListDeleteDialog" persistent max-width="550">
             <template v-slot:activator="{ on, attrs }">
               <v-btn color="error" dark outlined v-bind="attrs" v-on="on">
