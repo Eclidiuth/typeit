@@ -7,7 +7,7 @@
           <thead>
             <tr>
               <th class="text-left">No.</th>
-              <th class="text-left">Time</th>
+              <th class="text-left">List Lenght</th>
               <th class="text-left">Action</th>
             </tr>
           </thead>

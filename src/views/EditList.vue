@@ -42,7 +42,7 @@
             <thead>
               <tr>
                 <th class="text-left">Word</th>
-                <th class="text-left">Length</th>
+                <th class="text-left">Word Length</th>
                 <th class="text-left">Action</th>
               </tr>
             </thead>

@@ -15,7 +15,7 @@
             <thead>
               <tr>
                 <th>Word</th>
-                <th>Length</th>
+                <th>Word Length</th>
                 <th>Action</th>
               </tr>
             </thead>
