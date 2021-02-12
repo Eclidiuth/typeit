@@ -7,7 +7,6 @@
 </template>
 
 <style lang="scss" scoped>
-
 div {
   background-color: $text-black-primary;
   padding: 40px;
@@ -18,13 +17,9 @@ div {
     font-weight: $fweight-h3;
     margin: 0;
 
-    .word--correct {
-      color: green;
-    }
+    .word--correct {color: green; }
 
-    .word--incorrect {
-      color: red;
-    }
+    .word--incorrect { color: red; }
   }
 }
 </style>
@@ -33,7 +28,7 @@ div {
 export default {
   name: 'TheWordDisplay',
   props: {
-    charCheckCollections: {
+    inputCheckResult: {
       type: Array,
       required: true,
     },
@@ -43,9 +38,7 @@ export default {
     }
   },
   computed: {
-    hilightClassNames(){
-      return this.charCheckCollections.map(el => el ? 'word--correct' : 'word--incorrect')
-    }
+    hilightClassNames(){ return this.inputCheckResult.map(el => el ? 'word--correct' : 'word--incorrect') }
   }
 }
 </script>

@@ -8,7 +8,7 @@
         />
       </template>
       <template v-else-if="gameState === 'playing' || gameState === 'standby'">
-        <the-word-display :word="word" :charCheckCollections="checkWordAndInput" />
+        <the-word-display :word="word" :inputCheckResult="checkWordAndInput" />
         <the-word-input-field v-model="inputFieldValue" />
       </template>
     </div>
