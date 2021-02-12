@@ -3,10 +3,13 @@
     <div class="w-11/12 mx-auto py-4">
       <the-page-title>Create new word list</the-page-title>
       <template v-if="!isWordListCreated">
-      <v-text-field v-model="wordListName" label="Word list name"></v-text-field>
-      <v-alert v-if="!isWordListNameEmpty && isWordListNameAvailable" color="green" dark>The word list name {{ wordListName }} is available.</v-alert>
-      <v-alert v-else-if="isCreateButtonClicked && isWordListNameEmpty" color="pink" dark type="error">Please input word list name.</v-alert>
-      <v-alert v-else-if="!isWordListNameAvailable" color="pink" dark type="error">The word list name {{ wordListName }} is already exist.</v-alert>
+      <v-text-field
+        v-model="wordListName"
+        counter="50"
+        label="Word list name"
+        :rules="wordListNameRules"
+      ></v-text-field>
+      <v-alert v-if="!isWordListNameAvailable" color="pink" dark type="error">The word list name {{ wordListName }} is already exist.</v-alert>
         <v-simple-table>
           <template v-slot:default>
             <thead>
@@ -86,6 +89,10 @@ export default {
   data: () => ({
     wordList: [],
     wordListName: "",
+    wordListNameRules: [
+      v => !!v || "Word list name is required.",
+      v => v.length <= 51 || "Word list name must be less than 51 characters",
+    ],
     inputFieldValue: "",
     isCreateButtonClicked: false,
     isWordListCreated: false,
