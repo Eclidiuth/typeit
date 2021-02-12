@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Rankings from '../views/Rankings.vue'
 import Edit from '../views/Edit.vue'
 import EditList from '../views/EditList.vue'
+import Create from '../views/Create.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/edit/:id',
     name: 'EditList',
     component: EditList
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: Create
   }
   // {
   //   path: '/about',

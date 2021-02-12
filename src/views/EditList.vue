@@ -35,9 +35,9 @@
           </template>
         </v-simple-table>
         <div class="my-3">
-          <v-alert color="pink" dark type="error" v-if="isWordListWordsEmpty">Error! You shoud have a word at least.</v-alert>
-          <v-btn :disabled="isWordListWordsEmpty" @click="saveChanges()" class="mr-2">Save changes</v-btn>
-          <v-btn :disabled="isWordListWordsEmpty" @click="backToEditPage()">Cancel</v-btn>
+          <v-alert color="pink" dark type="error" v-if="isWordListEmpty">You shoud have a word at least.</v-alert>
+          <v-btn :disabled="isWordListEmpty" @click="saveChanges()" class="mr-2">Save changes</v-btn>
+          <v-btn :disabled="isWordListEmpty" @click="backToEditPage()">Cancel</v-btn>
         </div>
       </template>
       <template v-else>
@@ -72,7 +72,7 @@ export default {
       const wordList = this.wordLists.filter(wordList => wordList.name === this.$route.params.id)[0]
       return wordList ? wordList.words : null
     },
-    isWordListWordsEmpty(){
+    isWordListEmpty(){
       return this.words.length === 0
     }
   },
@@ -87,7 +87,7 @@ export default {
       this.addWordFormInput = ""
     },
     saveChanges(){
-      if(!this.isWordListWordsEmpty){
+      if(!this.isWordListEmpty){
         const wordListName = this.$route.params.id
         this.$store.dispatch('updateWordListWords', {
           wordListName: wordListName,

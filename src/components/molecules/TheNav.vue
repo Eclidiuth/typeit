@@ -11,6 +11,9 @@
         <li :class="{active: this.$route.path === '/rankings'}">
           <router-link to="/rankings">Rankings</router-link>
         </li>
+        <li :class="{active: this.$route.path.includes('/create')}">
+          <router-link to="/create">Create</router-link>
+        </li>
         <li :class="{active: this.$route.path.includes('/edit')}">
           <router-link to="/edit">Edit</router-link>
         </li>
