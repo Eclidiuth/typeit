@@ -13,18 +13,12 @@
       </template>
     </div>
     <div class="main mt-4 pb-3">
-      <div class="w-11/12 mx-auto">
-        <the-word-list :words="wordList.words" :wordListName="wordListName" />
-        <div class="xl:flex">
-          <div class="xl:w-1/2">
-            <the-ranking-list :records="timeRecords" class="md:w-11/12" />
-          </div>
-          <div class="xl:w-1/2">
-            <the-select-word-list @wordListSelect="handleWordListSelect"
-              :wordLists="wordLists" :wordListName="wordListName" class="md:w-11/12"
-            />
-          </div>
-        </div>
+      <the-word-list :words="wordList.words" :wordListName="wordListName" class="w-11/12 mx-auto my-4 mt-8" />
+      <div class="xl:flex my-4">
+        <the-ranking-list :records="timeRecords" class="md:w-5/12 mx-auto" />
+        <the-select-word-list @wordListSelect="handleWordListSelect"
+          :wordLists="wordLists" :wordListName="wordListName" class="md:w-5/12 mx-auto"
+        />
       </div>
     </div>
   </ti-sheet>

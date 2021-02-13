@@ -1,17 +1,9 @@
 <template>
   <div>
-    <v-expansion-panels accordion flat multiple v-model="panel">
-      <v-expansion-panel>
-        <v-expansion-panel-header>
-          <h3>Words | {{ wordListName }}</h3>
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-chip-group column>
-            <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
-          </v-chip-group>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <h3 class="my-2">Words | {{ wordListName }}</h3>
+    <v-chip-group column>
+      <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
+    </v-chip-group>
   </div>
 </template>
 
