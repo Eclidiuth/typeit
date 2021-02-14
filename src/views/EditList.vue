@@ -48,7 +48,9 @@
             </thead>
             <tbody>
               <tr v-for="(word, index) in words" :key="index">
-                <td>{{ word }}</td>
+                <td>
+                  <v-text-field v-model="words[index]" :key="index"></v-text-field>
+                </td>
                 <td>{{ word.length }}</td>
                 <td>
                   <v-btn outlined @click="deleteWord(index)">Delete</v-btn>
