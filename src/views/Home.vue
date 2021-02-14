@@ -116,7 +116,7 @@ export default {
 
           const gameStartedAt = this.gameStartedAt
           const year    = gameStartedAt.getFullYear()
-          const month   = ('0' + gameStartedAt.getMonth() + 1).slice(-2)
+          const month   = ('0' + (gameStartedAt.getMonth() + 1)).slice(-2)
           const date    = ('0' + gameStartedAt.getDate()).slice(-2)
           const hour    = ('0' + gameStartedAt.getHours()).slice(-2)
           const minute  = ('0' + gameStartedAt.getMinutes()).slice(-2)
