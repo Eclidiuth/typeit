@@ -2,7 +2,7 @@
 
 TypeIt is a typing practice app based on KeyTest version 10
 
-![App Screenshot](/public/screenshot1.png)
+![App Screenshot](https://pbs.twimg.com/media/EuDSLxaUUAAahTM?format=png&name=4096x4096)
 
 ## Project setup
 ```
