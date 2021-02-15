@@ -2,7 +2,12 @@
   <div>
     <h3 class="my-2">Words | {{ wordListName }}</h3>
     <v-chip-group column>
-      <v-chip v-for="(word, index) in words" :key="index">{{ word }}</v-chip>
+      <v-chip
+        v-for="(word, index) in words"
+        :key="index"
+        :color="index + 1<= wordListIndex ? 'green' : ''"
+        :text-color="index + 1<= wordListIndex ? 'white' : ''" 
+      >{{ word }}</v-chip>
     </v-chip-group>
   </div>
 </template>
@@ -33,6 +38,10 @@ export default {
     },
     wordListName: {
       type: String,
+      required: true
+    },
+    wordListIndex: {
+      type: Number,
       required: true
     }
   },

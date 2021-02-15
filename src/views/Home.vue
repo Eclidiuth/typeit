@@ -17,7 +17,7 @@
       </template>
     </div>
     <div class="main mt-4 pb-3">
-      <the-word-list :words="wordList.words" :wordListName="wordListName" class="w-11/12 mx-auto my-4 mt-8" />
+      <the-word-list :words="wordList.words" :wordListName="wordListName" :wordListIndex="wordListIndex" class="w-11/12 mx-auto my-4 mt-8" />
       <div class="xl:flex w-11/12 mx-auto my-4">
         <div class="w-6/12 mx-auto">
           <the-ranking-list :records="timeRecords" class="md:w-11/12" />
