@@ -7,8 +7,12 @@
           v-on:click.native="restartGame"
         />
       </template>
-      <template v-else-if="gameState === 'playing' || gameState === 'standby'">
-        <the-word-display :word="word" :inputCheckResult="checkWordAndInput" />
+      <template v-else-if="gameState === 'playing' || gameState === 'stand_by'">
+        <the-word-display
+          :gameState="gameState"
+          :word="word"
+          :inputCheckResult="checkWordAndInput"
+        />
         <the-word-input-field v-model="inputFieldValue" />
       </template>
     </div>
@@ -39,7 +43,7 @@ import TheSelectWordList from '@/components/molecules/TheSelectWordList.vue'
 import { mapGetters } from 'vuex'
 
 const GAME_STATE = {
-  STAND_BY: 'standby',
+  STAND_BY: 'stand_by',
   PLAYING: 'playing',
   CLEARED: 'cleared'
 }
@@ -75,7 +79,7 @@ export default {
     },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
-      return record ? record.sort((a, b) => a.time > b.time ? 1 : -1) : null
+      return record ? record.sort((a, b) => a.time > b.time ? 1 : -1).slice(0, 5) : null
     },
     checkWordAndInput(){
       return (this.inputFieldValue.length >= this.word.length)

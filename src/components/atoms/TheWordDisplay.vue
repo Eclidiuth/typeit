@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p class="text-center">
+    <the-game-state-label :gameState="gameState" />
+    <p class="text-center mb-0 p-10">
       <span v-for="(char, index) in word" :key="index" :class="hilightClassNames[index]">{{ char }}</span>
     </p>
   </div>
@@ -9,13 +10,11 @@
 <style lang="scss" scoped>
 div {
   background-color: $text-black-primary;
-  padding: 40px;
 
   p {
     color: $text-white-primary;
     font-size: $fsize-h4;
     font-weight: $fweight-h3;
-    margin: 0;
 
     .word--correct {color: green; }
 
@@ -25,12 +24,23 @@ div {
 </style>
 
 <script>
+import TheGameStateLabel      from '@/components/atoms/TheGameStateLabel.vue'
+
 export default {
   name: 'TheWordDisplay',
+  components: {
+    TheGameStateLabel,
+  },
   props: {
     inputCheckResult: {
       type: Array,
       required: true,
+    },
+    gameState: {
+      props: {
+        type: String,
+        required: true
+      }
     },
     word: {
       type: String,
