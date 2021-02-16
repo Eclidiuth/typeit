@@ -67,6 +67,41 @@ export default new Vuex.Store({
             date: '2020/12/22 16:37:48'
           }
         ]
+      },
+      {
+        name: 'Alphabet',
+        words: [
+          ..."abcdefghijklmnopqrstuvwxyz".split("")
+        ],
+        timeRecords: []
+      },
+      {
+        name: 'Vue.js Directives',
+        words: [
+          "v-if",
+          "v-if-else",
+          "v-else",
+          "v-for",
+          "v-model",
+          "v-on:click",
+          "@click",
+          "v-bind:prop",
+          ":prop"
+        ],
+        timeRecords: []
+      },
+      {
+        name: 'Vue.js',
+        words: [
+          "template",
+          "components",
+          "props",
+          "data",
+          "computed",
+          "methods",
+          "mounted"
+        ],
+        timeRecords: []
       }
     ]
   },

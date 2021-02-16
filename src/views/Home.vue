@@ -115,6 +115,9 @@ export default {
         if(this.wordList.words[nextWordListIndex]){
           this.wordListIndex = nextWordListIndex
         } else {
+          const lastWordListIndex = this.wordListIndex + 1
+          this.wordListIndex = lastWordListIndex
+
           this.gameClearedAt = new Date()
           this.gameState = GAME_STATE.CLEARED
 
