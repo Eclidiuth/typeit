@@ -14,12 +14,7 @@ export default new Vuex.Store({
       {
         name: 'テスト用データ2',
         words: ['ab', 'cd', 'ef'],
-        timeRecords: [
-          {
-            time: 10.0,
-            date: '2020/12/11 00:00:00'
-          },
-        ]
+        timeRecords: []
       },
       {
         name: 'JavaScript config files',
@@ -32,20 +27,7 @@ export default new Vuex.Store({
           '.babelrc',
           '.eslintrc'
         ],
-        timeRecords: [
-          {
-            time: 20.1,
-            date: '2020/12/16 00:00:00'
-          },
-          {
-            time: 22.2,
-            date: '2020/12/16 00:05:00'
-          },
-          {
-            time: 24.0,
-            date: '2020/12/16 00:10:00'
-          },
-        ]
+        timeRecords: []
       },
       {
         name: 'Redux',

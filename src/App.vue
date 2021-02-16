@@ -17,9 +17,7 @@ export default {
   },
   mounted(){
     if(localStorage.getItem('wordLists')){
-      const wordLists = this.$store.getters['wordLists']
-      const mergedWordLists = Object.assign(wordLists, JSON.parse(localStorage.getItem('wordLists')))
-      this.$store.dispatch('updateWordLists', mergedWordLists)
+      this.$store.dispatch('updateWordLists', JSON.parse(localStorage.getItem('wordLists')))
     }
   }
 }

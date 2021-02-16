@@ -79,7 +79,7 @@ export default {
     },
     timeRecords(){
       const record = this.findRecordByName(this.wordListName)
-      return record ? record.sort((a, b) => a.time > b.time ? 1 : -1).slice(0, 5) : null
+      return record.sort((a, b) => a.time > b.time ? 1 : -1).slice(0, 5)
     },
     checkWordAndInput(){
       return (this.inputFieldValue.length >= this.word.length)
