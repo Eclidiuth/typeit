@@ -1,8 +1,12 @@
 <template>
   <div>
     <the-game-state-label :gameState="gameState" />
-    <p class="text-center mb-0 p-10">
-      <span v-for="(char, index) in word" :key="index" :class="hilightClassNames[index]">{{ char }}</span>
+    <p class="text-4xl text-center mb-0 p-10">
+      <span
+        v-for="(char, index) in word"
+        :key="index"
+        :class="hilightClassNames[index]"
+      >{{ char }}</span>
     </p>
   </div>
 </template>
@@ -13,8 +17,6 @@ div {
 
   p {
     color: $text-white-primary;
-    font-size: $fsize-h4;
-    font-weight: $fweight-h3;
 
     .word--correct {color: green; }
 

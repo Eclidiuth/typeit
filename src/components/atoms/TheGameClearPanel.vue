@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="time text-center">Clear time: {{ time }} seconds</div>
-    <div class="playAgain d-flex justify-center">
-      <p>
+    <div class="green darken-3 text-4xl p-10 text-center">Clear time: {{ time }} seconds</div>
+    <div class="playAgain flex justify-center p-8">
+      <p class="inline-block text-2xl mb-0 px-4 py-2">
         <font-awesome-icon icon="undo" />
         Play again
       </p>
@@ -11,36 +11,15 @@
 </template>
 
 <style lang="scss" scoped>
-
-</style>
-<style lang="scss" scoped>
-div {
   div {
     color: $text-white-primary;
-    margin: 0;
-
-    p {
-      margin: 0;
-      padding: 0;
-    }
-
-    &.time {
-      background-color: $colors-green;
-      font-size: $fsize-h4;
-      padding: 40px;
-    }
 
     &.playAgain {
       background-color: $black;
-      font-size: $fsize-h5;
-      padding: 32px;
 
       p {
-        border-radius: 8px;
-        display: inline-block;
         flex: 0 1 auto;
         transition: background .15s;
-        padding: 8px;
 
         &:hover {
           background-color: lighten($black, 5%);
@@ -48,7 +27,6 @@ div {
       }
     }
   }
-}
 </style>
 
 <script>

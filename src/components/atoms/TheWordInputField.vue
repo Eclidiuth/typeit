@@ -1,9 +1,13 @@
 <template>
   <div>
-    <input v-model="localValue" type="text" placeholder="Type the word above here">
+    <input
+      v-model="localValue"
+      type="text"
+      placeholder="Type the word above here"
+      class="block text-2xl text-center p-10 w-full"
+    >
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 div {
@@ -13,11 +17,6 @@ div {
     box-sizing: border-box;
     border-radius: 0;
     color: $text-white-primary;
-    display: block;
-    font-size: $fsize-h5;
-    text-align: center;
-    padding: 40px;
-    width: 100%;
     -webkit-appearance: none;
     appearance: none;
 

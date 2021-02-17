@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center">
+  <nav class="flex items-center h-16">
     <div class="nav-container flex items-center justify-between w-9/12 mx-auto">
       <h1>
         <router-link to="/">TypeIt</router-link>
@@ -27,7 +27,6 @@
 
 nav {
   background-color: $text-black-primary;
-  height: 60px;
   min-width: $content-min-width;
 
   .nav-container {
