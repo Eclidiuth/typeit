@@ -99,7 +99,7 @@ export default new Vuex.Store({
     setWordListWords: (state, payload) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
       if(wordListIndex >= 0){
-        state.wordLists[wordListIndex].words = payload.words
+        state.wordLists[wordListIndex].words = payload.wordListWords
       }
     },
     addWordList: (state, wordList) => {
@@ -110,14 +110,16 @@ export default new Vuex.Store({
       })
     },
     deleteWordList: (state, wordListName) => {
-      const index = state.wordLists.findIndex(wordList => wordList.name === wordListName)
-      if(index != -1){
+      const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === wordListName)
+      if(wordListIndex >= 0){
         state.wordLists.splice(index, 1)
       }
     },
     addTimeRecord: (state, payload) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
-      state.wordLists[wordListIndex].timeRecords.push(payload.timeRecord)
+      if(wordListIndex >= 0){
+        state.wordLists[wordListIndex].timeRecords.push(payload.timeRecord)
+      }
     }
   },
   actions: {
