@@ -112,7 +112,7 @@ export default new Vuex.Store({
     deleteWordList: (state, wordListName) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === wordListName)
       if(wordListIndex >= 0){
-        state.wordLists.splice(index, 1)
+        state.wordLists.splice(wordListIndex, 1)
       }
     },
     addTimeRecord: (state, payload) => {
