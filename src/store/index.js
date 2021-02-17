@@ -98,7 +98,9 @@ export default new Vuex.Store({
     setWordLists: (state, payload) => state.wordLists = payload,
     setWordListWords: (state, payload) => {
       const wordListIndex = state.wordLists.findIndex(wordList => wordList.name === payload.wordListName)
-      state.wordLists[wordListIndex].words = payload.wordListWords
+      if(wordListIndex >= 0){
+        state.wordLists[wordListIndex].words = payload.words
+      }
     },
     addWordList: (state, wordList) => {
       state.wordLists.push({

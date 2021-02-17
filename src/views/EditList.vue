@@ -130,7 +130,7 @@ export default {
         const wordListName = this.$route.params.id
         this.$store.dispatch('updateWordListWords', {
           wordListName: wordListName,
-          wordListWords: this.words
+          words: this.words
         })
   
         localStorage.setItem('wordLists', JSON.stringify(this.wordLists))
