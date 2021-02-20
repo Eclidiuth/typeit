@@ -69,10 +69,12 @@ export default {
   },
   methods: {
     restartGame(){
-      this.gameState = GAME_STATE.STAND_BY
       this.inputFieldValue = ""
       this.$emit('updateWordListIndex', 0)
-    },
+      setTimeout(() => {
+        this.gameState = GAME_STATE.STAND_BY
+      })
+    }
   },
   watch: {
     inputFieldValue(){

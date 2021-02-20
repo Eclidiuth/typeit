@@ -4,7 +4,7 @@
       :wordList="wordList"
       :wordListIndex="wordListIndex"
       @updateWordListIndex="handleUpdateWordListIndex"
-      ref="tiGamePanel"
+      ref="hoge"
     />
     <div class="main mt-4 pb-3">
       <the-word-list
@@ -68,7 +68,7 @@ export default {
   methods: {
     handleWordListSelect(wordListName){
       this.wordListName = wordListName
-      this.$refs.tiGamePanel.restartGame()
+      this.$refs.hoge.restartGame()
     },
     handleUpdateWordListIndex(value){
       this.wordListIndex = value
