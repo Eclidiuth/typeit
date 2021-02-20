@@ -58,7 +58,10 @@
               </tr>
               <tr>
                 <td>
-                  <v-text-field v-model="addWordFormInput" label="Input word here"></v-text-field>
+                  <v-text-field
+                    v-model="addWordFormInput"
+                    label="Input word here"
+                  ></v-text-field>
                 </td>
                 <td>
                   <span>{{ addWordFormInput.length }}</span>
@@ -72,7 +75,7 @@
         </v-simple-table>
         <div class="my-3">
           <v-alert color="pink" dark type="error" v-if="isWordListEmpty">You shoud have a word at least.</v-alert>
-          <v-btn :disabled="isWordListEmpty" @click="saveChanges()" class="mr-2">Save changes</v-btn>
+          <v-btn :disabled="isWordListEmpty" @click="saveChanges()" class="mr-2">Save</v-btn>
           <v-btn :disabled="isWordListEmpty" @click="backToEditPage()">Cancel</v-btn>
         </div>
       </template>
@@ -144,6 +147,9 @@ export default {
       this.deleteWordList(this.$route.params.id)
       localStorage.setItem('wordLists', JSON.stringify(this.wordLists))
       this.$router.push('/edit/')
+    },
+    handleInputAddWordForm(e){
+      console.log(e)
     }
   },
   mounted(){
